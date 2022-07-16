@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    .all {
+      background-color: rgb(221,221,221);
+    }
+    .all>div {
+      display: inline-block;
+      color: rgb(105,104,106);
+      position: relative;
+      font-size: 24px;
+      margin: 0 30px;
+      font-weight: bold;
+      vertical-align: bottom;
+    }
+    img {
+      width: 25px;
+      height: 25px;
+    }
+
+    .a1 {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      background-color: rgb(255,255,255);
+      white-space: nowrap;
+      width: 200px;
+      border-radius: 0.5em;
+      text-indent: 1em;
+      box-shadow: inset  0 0 3px grey;
+    }
+
+    .a:hover .a1 {
+      display: block;
+    }
+    .a1>div {
+      margin: 8px 0;
+    }
+    .a1>:nth-child(3n) {
+      border-bottom: 1px solid #000;
+      padding-bottom: 8px;
+    }
+    .a1>div:hover {
+      background-color: rgb(0,96,192);
+      color: #fff;
+    }
+
+    .a11 ul {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 25%;
+      left: 100%;
+      background-color: rgb(255,255,255);;
+      white-space: nowrap;
+      width: 300px;
+      border-radius: 0.5em;
+      text-indent: 1em;
+      box-shadow: inset  0 0 3px grey;
+      list-style: none;
+      padding: 0;
+    }
+    .a11 ul li {
+      color: rgb(105,104,106);
+      margin: 10px 0;
+    }
+    .a11 ul li:hover {
+      background-color: rgb(0,96,192);
+    }
+
+    .a11:hover ul {
+      display: block;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="all">
+    <img src="https://ts1.cn.mm.bing.net/th?id=OIP-C.9jpHcBcHN8iphHBuz2PcHAHaHa&w=171&h=170&c=8&rs=1&qlt=90&o=6&dpr=1.38&pid=3.1&rm=2" alt="aaa">
+    <div class="a">
+      文件
+      <section class="a1">
+        <div>新建文本文件</div>
+        <div>新建文件</div>
+        <div>新建窗口</div>
+        <div class="a11">
+          打开文件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>
+          <ul>
+            <li>打开</li>
+            <li>打开</li>
+            <li>打开</li>
+            <li>打开</li>
+            <li>打开</li>
+            <li>打开</li>
+            <li>打开</li>
+            <li>打开</li>
+            <li>打开</li>
+            <li>打开</li>
+          </ul>
+        </div>
+        <div>打开文件夹</div>
+        <div>剪切</div>
+        <div>复制</div>
+        <div>保存</div>
+        <div>另存为</div>
+        <div>退出</div>
+      </section>
+
+      </div>
+    <div class="b">
+      编辑
+    </div>
+    <div class="c">
+      选择
+    </div>
+    <div class="d">
+      查看
+    </div>
+  </div>
+
+
+
+</body>
+</html>
