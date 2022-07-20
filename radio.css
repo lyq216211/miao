@@ -1,0 +1,33 @@
+.img img {
+  /* width: 100%;
+  height: 100%; */
+  opacity: 0;
+  position: absolute;
+  transition: 1s;
+  right: 0;
+  bottom: 0;
+}
+
+input:nth-child(1):checked ~ div > img:nth-child(1),input:nth-child(2):checked ~ div > img:nth-child(2),input:nth-child(3):checked ~ div > img:nth-child(3){
+  opacity: 1;
+}
+
+.label {
+
+  position: fixed;
+  width: 180px;
+  right: 0;
+  bottom: 0;
+}
+.label label {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.label label:hover {
+  background-color: grey;
+}
