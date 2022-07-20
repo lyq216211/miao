@@ -11,7 +11,9 @@
 input:nth-child(1):checked ~ div > img:nth-child(1),input:nth-child(2):checked ~ div > img:nth-child(2),input:nth-child(3):checked ~ div > img:nth-child(3){
   opacity: 1;
 }
-
+input:nth-child(1):checked ~ section > label:nth-child(1),input:nth-child(2):checked ~ section > label:nth-child(2),input:nth-child(3):checked ~ section > label:nth-child(3) {
+  background-color: grey;
+}
 .label {
 
   position: fixed;
