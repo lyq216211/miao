@@ -10,7 +10,7 @@
       margin: 0;
       background-color: rgb(240,240,240);
     }
-    .container {
+    div {
       position: relative;
       display: block;
       width: 600px;
@@ -18,7 +18,7 @@
       background-color: rgb(255,255,255);
       margin: auto;
     }
-    div.button {
+    label {
       width: 200px;
       height: 100px;
       margin: auto;
@@ -47,10 +47,10 @@
     input {
       display: none;
     }
-    input:checked + div {
+    input:checked + label {
       background-color: rgb(48,243,73);
     }
-    input:checked + div>span {
+    input:checked + label>span {
       left: 105px;
     }
 
@@ -59,12 +59,12 @@
 </head>
 <body>
 
-  <label  class="container">
-    <input type="checkbox" class="check">
-    <div class="button">
+ <div>
+    <input type="checkbox" class="check" id="s">
+    <label for="s">
       <span></span>
-    </div>
-  </label>
+    </label>
+  </div>
 
 </body>
 </html>
