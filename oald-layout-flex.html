@@ -26,6 +26,13 @@
       background-color: #246;
       /* flex-shrink: 1; */
     }
+    .a1 {
+      height: 100px;
+      flex-shrink: 0;
+    }
+    .oald {
+      line-height: 70px;
+    }
     .a2 {
       overflow: auto;
     }
@@ -34,19 +41,26 @@
     }
     .b {
       flex: calc(100% - 600px);
+
       display: flex;
       flex-direction: column;
+      flex-wrap: nowrap;
       background-color: #188;
     }
     .b1 {
       /* height: 100px; */
-
+      /* flex-shrink: 1; */
+      /* flex: 0 1 1800px; */
+      height: 100px;
       border-bottom: 1px solid;
+      flex-shrink: 0;
+
     }
     h2 {
       margin: 0;
-      text-align: center;
       line-height: 100px;
+      text-align: center;
+      /* line-height: 100px; */
     }
     .b2 {
       overflow: auto;
@@ -69,7 +83,7 @@
 <div class="container">
   <div class="a">
     <div class="a1">
-      <h2>OALD  Se7en</h2>
+      <h2 class="oald">OALD  Se7en</h2>
       <input type="text">
       <button></button>
     </div>
