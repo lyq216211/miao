@@ -1,0 +1,224 @@
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+body,
+.nav1,
+.nav2 {
+  min-width: 970px;
+}
+.containerLeft,
+.indexMain {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1250px;
+}
+.nav1 {
+  height: 40px;
+  background-color: #333;
+}
+.nav1 a {
+  color: grey;
+  line-height: 40px;
+  padding: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 12px;
+}
+.nav1 a:first-child {
+  padding-left: 0;
+}
+.nav1 a:hover {
+  color: white;
+}
+.nav1 span {
+  color: grey;
+}
+.nav1 .containerRight {
+  float: right;
+}
+.nav1 .containerRight #shoppingCart {
+  display: inline-block;
+  position: relative;
+  width: 120px;
+  line-height: 40px;
+  text-align: center;
+  padding: 0;
+  background-color: #424242;
+}
+.nav1 .containerRight #shoppingCart:hover {
+  color: red;
+  background-color: #fff;
+}
+.nav1 .containerRight #shoppingCart:hover .cart {
+  display: block;
+  position: absolute;
+  width: 320px;
+  height: 100px;
+  box-shadow: 0 0 5px 1px gray;
+  top: 40px;
+  right: 0;
+  padding: 40px 0;
+}
+.nav1 .containerRight #shoppingCart .cart {
+  display: none;
+}
+/* 第二个导航栏 nav2*/
+.nav2 {
+  height: 100px;
+}
+.nav2 .container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1250px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+.nav2 .container > ul {
+  display: flex;
+  margin-left: 150px;
+  margin-right: 80px;
+  align-items: center;
+}
+.nav2 .container > ul li {
+  /* display: inline-block; */
+  padding: 10px;
+  list-style: none;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  /* 导航栏级联菜单 */
+}
+.nav2 .container > ul li:hover {
+  color: red;
+}
+.nav2 .container > ul li:hover ul {
+  display: flex;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  height: 230px;
+}
+.nav2 .container > ul li ul.show1 {
+  display: none;
+  width: 100vw;
+}
+.nav2 .container > ul li ul.show1 li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nav2 .container > ul li ul.show1 li span:nth-of-type(1) {
+  color: black;
+}
+.nav2 .container a img {
+  width: 56px;
+}
+.nav2 .container input {
+  height: 50px;
+  width: 250px;
+  border: 1px solid #e0e0e0;
+  font-size: 14px;
+}
+.nav2 .container input::placeholder {
+  color: black;
+}
+.navRight ul {
+  position: fixed;
+  width: 84px;
+  height: 455px;
+  right: 0;
+  bottom: 70px;
+  z-index: 999;
+}
+.indexMain {
+  height: 462px;
+  margin-top: 0;
+  cursor: pointer;
+  /* display: flex; */
+}
+.indexMain aside {
+  width: 234px;
+  float: left;
+  position: relative;
+}
+.indexMain aside > ul {
+  margin: 0;
+  padding: 14px 0;
+  position: static;
+}
+.indexMain aside > ul > li {
+  font-size: 14px;
+  color: white;
+  list-style: none;
+  padding: 12px 30px;
+  /* 侧边栏级联菜单 */
+}
+.indexMain aside > ul > li:hover {
+  background-color: #ff6700;
+}
+.indexMain aside > ul > li:hover ul.show {
+  display: flex;
+  flex-flow: column wrap;
+  position: absolute;
+  left: 234px;
+  top: 0;
+  justify-content: space-around;
+  /* align-items: flex-start; */
+  align-content: flex-start;
+  color: red;
+  box-shadow: 0 0 1px 0 black;
+}
+.indexMain aside > ul > li:hover ul.show span:hover {
+  color: #ff6700;
+}
+.indexMain aside > ul > li > span {
+  right: 20px;
+  position: absolute;
+}
+.indexMain aside > ul > li ul.show {
+  display: none;
+  height: 462px;
+  margin: 0;
+  padding: 0;
+}
+.indexMain aside > ul > li ul.show::after {
+  content: ' ';
+  flex-grow: 1;
+  background-color: #fff;
+}
+.indexMain aside > ul > li ul.show li {
+  width: 254px;
+  height: 77px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  /* align-content: flex-start; */
+}
+.indexMain aside > ul > li ul.show li img {
+  margin: 0 20px;
+}
+.indexMain aside > ul > li ul.show span {
+  color: black;
+  font-size: 14px;
+}
+.indexMain main {
+  background-image: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/36b45c624f42fa81732457e3f9773dbd.jpg?thumb=1&w=1226&h=460&f=webp&q=90);
+  background-size: cover;
+  width: 1250px;
+  height: 462px;
+}
+/* 主页侧边栏菜单 */
+/* .indexMain .show1 li:nth-child(n + 22) {
+
+  flex: none;
+}
+.indexMain .show1 li:last-child {
+  flex: 1;
+} */
+/* 主页轮播图 */
