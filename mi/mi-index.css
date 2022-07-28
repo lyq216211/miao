@@ -8,19 +8,27 @@ body,
 .nav1,
 .nav2 {
   min-width: 970px;
+  font-family: mi;
 }
 .containerLeft,
 .indexMain {
   margin-left: auto;
   margin-right: auto;
-  width: 1250px;
+  width: 1226px;
+}
+@font-face {
+  font-family: mi;
+  src: url(mifont.ttf);
+}
+[class*='icon'] {
+  font-family: mi;
 }
 .nav1 {
   height: 40px;
   background-color: #333;
 }
 .nav1 a {
-  color: grey;
+  color: #b0b0b0;
   line-height: 40px;
   padding: 6px;
   text-decoration: none;
@@ -34,7 +42,7 @@ body,
   color: white;
 }
 .nav1 span {
-  color: grey;
+  color: #424242;
 }
 .nav1 .containerRight {
   float: right;
@@ -48,22 +56,33 @@ body,
   padding: 0;
   background-color: #424242;
 }
+.nav1 .containerRight #shoppingCart::before {
+  content: '\E60C';
+  font-size: 20px;
+  line-height: 1;
+}
 .nav1 .containerRight #shoppingCart:hover {
-  color: red;
+  color: #ff6700;
   background-color: #fff;
 }
 .nav1 .containerRight #shoppingCart:hover .cart {
-  display: block;
+  display: flex;
   position: absolute;
   width: 320px;
   height: 100px;
   box-shadow: 0 0 5px 1px gray;
   top: 40px;
   right: 0;
-  padding: 40px 0;
+  background-color: #fff;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
 }
 .nav1 .containerRight #shoppingCart .cart {
   display: none;
+  width: 320px;
+  height: 0;
+  transition: 1s;
 }
 /* 第二个导航栏 nav2*/
 .nav2 {
@@ -73,7 +92,7 @@ body,
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  width: 1250px;
+  width: 1226px;
   height: 100px;
   display: flex;
   align-items: center;
@@ -119,13 +138,80 @@ body,
 .nav2 .container a img {
   width: 56px;
 }
-.nav2 .container input {
+.nav2 .container .search {
+  position: absolute;
+  right: 0;
   height: 50px;
-  width: 250px;
-  border: 1px solid #e0e0e0;
+  width: 300px;
   font-size: 14px;
+  display: flex;
 }
-.nav2 .container input::placeholder {
+.nav2 .container .search .search-content {
+  flex-grow: 1;
+  border: none;
+  text-indent: 0.5em;
+  border: 1px solid #e0e0e0;
+}
+.nav2 .container .search .search-content:focus {
+  outline: none;
+}
+.nav2 .container .search .search-content:focus {
+  border: 1px solid red;
+}
+.nav2 .container .search .search-content:focus ~ .search-icon {
+  border: 1px solid red;
+  border-left: none;
+}
+.nav2 .container .search .search-content:focus ~ .history {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  height: 240px;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-top: none;
+  position: absolute;
+  z-index: 5;
+  top: 50px;
+  left: 0;
+}
+.nav2 .container .search .search-content:focus ~ .history li {
+  font-size: 14px;
+  list-style: none;
+  flex: 1;
+  text-indent: 1em;
+  display: flex;
+  align-items: center;
+}
+.nav2 .container .search .search-content:focus ~ .history li:hover {
+  background-color: #fafafa;
+}
+.nav2 .container .search .search-icon {
+  background-color: #fff;
+  padding: 0;
+  border: 1px solid #e0e0e0;
+  border-left: none ;
+  cursor: pointer;
+  width: 50px;
+  flex: none;
+  font-size: 25px;
+}
+.nav2 .container .search .search-icon:hover {
+  background-color: #ff6700;
+  color: #fff;
+}
+.nav2 .container .search .history {
+  display: none;
+}
+.nav2 .container .search:hover,
+.nav2 .container .search:hover > * {
+  border: 1px solid #b0b0b0;
+}
+.nav2 .container .search::placeholder {
   color: black;
 }
 .navRight ul {
@@ -144,8 +230,11 @@ body,
 }
 .indexMain aside {
   width: 234px;
+  height: 462px;
   float: left;
   position: relative;
+  z-index: 21;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 .indexMain aside > ul {
   margin: 0;
@@ -172,7 +261,7 @@ body,
   /* align-items: flex-start; */
   align-content: flex-start;
   color: red;
-  box-shadow: 0 0 1px 0 black;
+  box-shadow: 0 0 3px 1px grey;
 }
 .indexMain aside > ul > li:hover ul.show span:hover {
   color: #ff6700;
@@ -180,6 +269,22 @@ body,
 .indexMain aside > ul > li > span {
   right: 20px;
   position: absolute;
+}
+.indexMain aside > ul > li ul.show1,
+.indexMain aside > ul > li .show2,
+.indexMain aside > ul > li .show3,
+.indexMain aside > ul > li .show5,
+.indexMain aside > ul > li .show6 {
+  width: 992px;
+}
+.indexMain aside > ul > li ul.show4,
+.indexMain aside > ul > li .show7,
+.indexMain aside > ul > li .show9,
+.indexMain aside > ul > li .show10 {
+  width: 744px;
+}
+.indexMain aside > ul > li ul.show8 {
+  width: 496px;
 }
 .indexMain aside > ul > li ul.show {
   display: none;
@@ -193,7 +298,7 @@ body,
   background-color: #fff;
 }
 .indexMain aside > ul > li ul.show li {
-  width: 254px;
+  width: 248px;
   height: 77px;
   background-color: white;
   display: flex;
@@ -208,10 +313,51 @@ body,
   font-size: 14px;
 }
 .indexMain main {
-  background-image: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/36b45c624f42fa81732457e3f9773dbd.jpg?thumb=1&w=1226&h=460&f=webp&q=90);
   background-size: cover;
-  width: 1250px;
+  width: 1226px;
   height: 462px;
+  position: relative;
+}
+.indexMain main div.img img {
+  position: absolute;
+  width: 1226px;
+  height: 462px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: 1s;
+}
+.indexMain main input:nth-child(1):checked ~ div > img:nth-child(1),
+.indexMain main input:nth-child(2):checked ~ div > img:nth-child(2),
+.indexMain main input:nth-child(3):checked ~ div > img:nth-child(3),
+.indexMain main input:nth-child(4):checked ~ div > img:nth-child(4),
+.indexMain main input:nth-child(5):checked ~ div > img:nth-child(5) {
+  opacity: 1;
+}
+.indexMain main div.label {
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
+  width: 100px;
+  height: 21px;
+  font-size: 0;
+  cursor: default;
+  display: flex;
+  align-items: center;
+}
+.indexMain main div.label label {
+  cursor: pointer;
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 4px;
+  border: 2px solid gray;
+  border-radius: 50%;
+}
+.indexMain main div.label label:hover {
+  background-color: #747170;
 }
 /* 主页侧边栏菜单 */
 /* .indexMain .show1 li:nth-child(n + 22) {
