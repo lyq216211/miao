@@ -1,17 +1,19 @@
 html,
-body {
+body,
+.index {
   margin: 0;
   width: 100%;
   height: 100%;
 }
-body,
-.nav1,
-.nav2 {
+body {
   min-width: 970px;
   font-family: mi;
 }
 .containerLeft,
-.indexMain {
+.indexMain,
+.showRow,
+.top-img,
+.phone-show {
   margin-left: auto;
   margin-right: auto;
   width: 1226px;
@@ -81,8 +83,8 @@ body,
 .nav1 .containerRight #shoppingCart .cart {
   display: none;
   width: 320px;
-  height: 0;
-  transition: 1s;
+  height: 1px;
+  transition: 0.5s;
 }
 /* 第二个导航栏 nav2*/
 .nav2 {
@@ -175,7 +177,7 @@ body,
   box-sizing: border-box;
   border-top: none;
   position: absolute;
-  z-index: 5;
+  z-index: 25;
   top: 50px;
   left: 0;
 }
@@ -336,6 +338,13 @@ body,
 .indexMain main input:nth-child(5):checked ~ div > img:nth-child(5) {
   opacity: 1;
 }
+.indexMain main input:nth-child(1):checked ~ div > label:nth-child(1),
+.indexMain main input:nth-child(2):checked ~ div > label:nth-child(2),
+.indexMain main input:nth-child(3):checked ~ div > label:nth-child(3),
+.indexMain main input:nth-child(4):checked ~ div > label:nth-child(4),
+.indexMain main input:nth-child(5):checked ~ div > label:nth-child(5) {
+  background-color: #747170;
+}
 .indexMain main div.label {
   position: absolute;
   right: 30px;
@@ -359,12 +368,122 @@ body,
 .indexMain main div.label label:hover {
   background-color: #747170;
 }
-/* 主页侧边栏菜单 */
-/* .indexMain .show1 li:nth-child(n + 22) {
-
-  flex: none;
+.showRow {
+  height: 170px;
+  margin-top: 14px;
+  margin-bottom: 26px;
+  display: flex;
+  justify-content: space-between;
 }
-.indexMain .show1 li:last-child {
-  flex: 1;
-} */
-/* 主页轮播图 */
+.showRow .row-left {
+  width: 234px;
+  display: flex;
+  background-color: #5f5750;
+  flex-flow: row wrap;
+}
+.showRow .row-left .link {
+  width: calc(234px/3);
+  height: 85px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 10px;
+}
+.showRow .row-left .link img {
+  width: 24px;
+}
+.showRow .row-left .link span {
+  font-size: 12px;
+  color: #b2b2b2;
+}
+.showRow .row-left .link span:hover {
+  color: #fff;
+}
+.showRow [class*='img'] {
+  width: 316px;
+  height: 170px;
+  cursor: pointer;
+}
+.mainContainer {
+  width: 100%;
+  background-color: #f5f5f5;
+  display: flow-root;
+}
+.mainContainer header {
+  margin: 22px auto;
+}
+.mainContainer header img {
+  width: 1226px;
+  height: 120px;
+}
+.mainContainer .phone-show {
+  height: 58px;
+}
+.mainContainer .phone-show .phone-nav {
+  height: 58px;
+  line-height: 58px;
+  font-weight: 200;
+  color: #333;
+}
+.mainContainer .phone-show .phone-nav span {
+  float: right;
+  font-size: 16px;
+}
+.mainContainer .phone-show .phone-nav span::after {
+  content: '     \E615';
+}
+.mainContainer .phone-show .phone-main {
+  width: 1226px;
+  height: 614px;
+}
+.mainContainer .phone-show .phone-main .phone-main-ul {
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.mainContainer .phone-show .phone-main .phone-main-ul li {
+  cursor: pointer;
+  background-color: #fff;
+  width: 234px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 0 0 0 #fff5;
+  transition: 0.3s;
+}
+.mainContainer .phone-show .phone-main .phone-main-ul li:first-child {
+  height: 100%;
+}
+.mainContainer .phone-show .phone-main .phone-main-ul li:hover {
+  box-shadow: 0 0 10px 2px #b4b4b4b4;
+  position: relative;
+  top: -3px;
+  left: -3px;
+}
+.mainContainer .phone-show .phone-main .phone-main-ul li span:nth-of-type(1) {
+  font-size: 14px;
+}
+.mainContainer .phone-show .phone-main .phone-main-ul li span:nth-of-type(2) {
+  font-size: 12px;
+  color: #b0b0b0;
+}
+.mainContainer .phone-show .phone-main .phone-main-ul li span:nth-of-type(3) {
+  font-size: 14px;
+  color: #ff6700;
+}
+.mainContainer .phone-show .phone-main .phone-main-ul li img {
+  width: 160px;
+}
+.mainContainer .phone-show .phone-main .phone-main-ul li img:first-child {
+  width: 234px;
+  height: 614px;
+}
