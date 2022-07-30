@@ -18,6 +18,13 @@ body {
   margin-right: auto;
   width: 1226px;
 }
+body ul {
+  margin: 0;
+  padding: 0;
+}
+body ul li {
+  list-style: none;
+}
 @font-face {
   font-family: mi;
   src: url(mifont.ttf);
@@ -166,13 +173,13 @@ body {
   margin: 0;
   padding: 0;
   list-style: none;
-  margin-right: 55px;
 }
 .nav2 .container a img {
   width: 56px;
 }
 .nav2 .container .search {
   position: relative;
+  margin-left: auto;
   height: 50px;
   width: 300px;
   font-size: 14px;
@@ -252,6 +259,41 @@ body {
   right: 0;
   bottom: 70px;
   z-index: 999;
+  display: flex;
+  flex-direction: column;
+}
+.navRight ul li {
+  width: 82px;
+  height: 90px;
+  border: 1px solid #f5f5f5;
+  position: relative;
+  display: flex;
+}
+.navRight ul li * {
+  margin: auto;
+}
+.navRight ul li img {
+  width: 30px;
+  position: absolute;
+  top: 18px;
+  left: 27px;
+  opacity: 0;
+}
+.navRight ul li img.img {
+  opacity: 1;
+}
+.navRight ul li span {
+  font-size: 14px;
+  margin-top: 60px;
+}
+.navRight ul li:hover img.img {
+  opacity: 0;
+}
+.navRight ul li:hover img.img-hover {
+  opacity: 1;
+}
+.navRight ul li:hover span {
+  color: #ff6700;
 }
 .indexMain {
   height: 462px;
