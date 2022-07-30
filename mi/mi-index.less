@@ -1,7 +1,7 @@
-* {
-  xbackground-color: rgba(0,0,0,0.08);
-  xbox-shadow: inset 0 0 1px red;
-}
+// * {
+//   background-color: rgba(0,0,0,0.08);
+//   box-shadow: inset 0 0 1px red;
+// }
 html,body,.index {
   margin: 0;
   width: 100%;
@@ -118,9 +118,15 @@ body {
     > ul {
       display: flex;
       margin-left: 180px;
-      margin-right: 50px;
       align-items: center;
       padding: 0;
+              /* 导航栏级联菜单 */
+      &:hover {
+        ul.show {
+          height: 230px;
+          box-shadow: 0 0 5px 0 #b4b4b4b4;
+        }
+      }
       > li {
         /* display: inline-block; */
         padding: 0 10px;
@@ -128,49 +134,50 @@ body {
         font-size: 16px;
         color: #333;
         cursor: pointer;
+        &:hover {
+          color: #ff6700;
+          ul.show {
+            z-index: 99;
+          }
+        }
         ul {
           display: flex;
           background-color: #fff;
           height: 0;
           overflow: hidden;
-          justify-content: space-evenly;
+          // justify-content: space-evenly;
           position: absolute;
           z-index: 22;
           top: 140px;
           left: 0;
           right: 0;
           padding: 0 calc(50% - 613px);
-          transition: .5s;
-          }
-
-        /* 导航栏级联菜单 */
-        &:hover {
-          color:red;
-          ul.show {
-            height: 230px;
-            box-shadow: 0 0 5px 0 #b4b4b4b4;
-            li {
-              flex-grow: 1;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              gap: 10px;
-              span:nth-of-type(1) {
-                color: #333;
-                font-size: 12px;
-              }
-              span:nth-of-type(2) {
-                color: #ff6700;
-                font-size: 12px;
-              }
-
+          transition: .3s;
+          li {
+            width: calc(1226px / 6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            span:nth-of-type(1) {
+              color: #333;
+              font-size: 12px;
+            }
+            span:nth-of-type(2) {
+              color: #ff6700;
+              font-size: 12px;
+            }
           }
         }
-
-        }
-
       }
+    }
+    > ul.service{
+      display: flex;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      margin-right: 55px;
     }
     a img {
       width: 56px;
@@ -224,7 +231,6 @@ body {
             &:hover {
               background-color: rgb(250,250,250);
             }
-
           }
         }
       }
@@ -254,7 +260,6 @@ body {
       }
     }
   }
-
 }
 // 右侧固定导航栏
 .navRight ul {
