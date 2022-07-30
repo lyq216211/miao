@@ -13,7 +13,7 @@ body {
 .indexMain,
 .showRow,
 .top-img,
-.phone-show {
+.product-interface {
   margin-left: auto;
   margin-right: auto;
   width: 1226px;
@@ -527,6 +527,13 @@ body ul li {
   background-color: #f5f5f5;
   display: flow-root;
 }
+.mainContainer div.area {
+  width: 1226px;
+  height: 614px;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
 .mainContainer header {
   margin: 22px auto;
 }
@@ -534,37 +541,87 @@ body ul li {
   width: 1226px;
   height: 120px;
 }
-.mainContainer .phone-show {
-  height: 58px;
+.mainContainer .product-interface {
+  margin-top: 22px;
 }
-.mainContainer .phone-show .phone-nav {
-  height: 58px;
-  line-height: 58px;
-  font-weight: 200;
+.mainContainer .product-interface:nth-child(n + 3) h2.nav div.button-bar div.button ul.main-ul li:last-child {
+  width: 234px;
+  height: 143px;
+  display: block;
+}
+.mainContainer .product-interface:nth-child(n + 3) h2.nav div.button-bar div.button ul.main-ul li:last-child span:first-child {
+  font-size: 18px;
+  color: #333;
+  display: block;
+  margin-top: 50px;
+  margin-left: 30px;
+}
+.mainContainer .product-interface:nth-child(n + 3) h2.nav div.button-bar div.button ul.main-ul li:last-child span:last-child {
+  font-size: 12px;
+  color: #333;
+  margin-left: 30px;
+  margin-right: 100px;
+  vertical-align: middle;
+}
+.mainContainer .product-interface:nth-child(n + 3) h2.nav div.button-bar div.button ul.main-ul li:last-child::after {
+  content: '\E615';
+  font-size: 3em;
+}
+.mainContainer .product-interface.phone h2.nav div.button-bar div.button {
   color: #333;
 }
-.mainContainer .phone-show .phone-nav span {
-  float: right;
+.mainContainer .product-interface.phone h2.nav div.button-bar div.button::after {
+  content: '\E615';
+}
+.mainContainer .product-interface h2.nav {
+  display: flex;
+  height: 58px;
+  margin: 0;
+  font-weight: 200;
+  color: #333;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.mainContainer .product-interface h2.nav div.button-bar {
+  display: flex;
+}
+.mainContainer .product-interface h2.nav div.button-bar:hover div.button {
+  color: black;
+  transition: none;
+}
+.mainContainer .product-interface h2.nav div.button-bar:hover div.button .main-ul {
+  visibility: hidden;
+  transition: none;
+}
+.mainContainer .product-interface h2.nav div.button-bar .button:first-child {
+  color: #ff6700;
+}
+.mainContainer .product-interface h2.nav div.button-bar div.button {
+  padding-left: 30px;
   font-size: 16px;
+  transition: 0s 9999s;
+  cursor: pointer;
 }
-.mainContainer .phone-show .phone-nav span::after {
-  content: '     \E615';
+.mainContainer .product-interface h2.nav div.button-bar div.button:first-child .main-ul {
+  visibility: visible;
 }
-.mainContainer .phone-show .phone-main {
+.mainContainer .product-interface h2.nav div.button-bar div.button .main-ul {
+  background-color: #f5f5f5;
   width: 1226px;
   height: 614px;
-}
-.mainContainer .phone-show .phone-main .phone-main-ul {
-  background-color: #f5f5f5;
-  margin: 0;
-  padding: 0;
-  height: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transition: 0s 9999s;
   display: flex;
+  visibility: hidden;
   flex-flow: column wrap;
-  justify-content: space-between;
-  align-content: space-between;
+  justify-content: flex-start;
+  gap: 14px ;
+  align-content: flex-start;
 }
-.mainContainer .phone-show .phone-main .phone-main-ul li {
+.mainContainer .product-interface h2.nav div.button-bar div.button .main-ul li {
   cursor: pointer;
   background-color: #fff;
   width: 234px;
@@ -572,34 +629,68 @@ body ul li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 10px;
   box-shadow: 0 0 0 #fff5;
-  transition: 0.3s;
 }
-.mainContainer .phone-show .phone-main .phone-main-ul li:first-child {
-  height: 100%;
-}
-.mainContainer .phone-show .phone-main .phone-main-ul li:hover {
+.mainContainer .product-interface h2.nav div.button-bar div.button .main-ul li:hover {
   box-shadow: 0 0 10px 2px #b4b4b4b4;
   position: relative;
-  top: -3px;
-  left: -3px;
+  top: -1px;
+  left: -1px;
 }
-.mainContainer .phone-show .phone-main .phone-main-ul li span:nth-of-type(1) {
+.mainContainer .product-interface h2.nav div.button-bar div.button .main-ul li span:nth-of-type(1) {
   font-size: 14px;
 }
-.mainContainer .phone-show .phone-main .phone-main-ul li span:nth-of-type(2) {
+.mainContainer .product-interface h2.nav div.button-bar div.button .main-ul li span:nth-of-type(2) {
   font-size: 12px;
   color: #b0b0b0;
 }
-.mainContainer .phone-show .phone-main .phone-main-ul li span:nth-of-type(3) {
+.mainContainer .product-interface h2.nav div.button-bar div.button .main-ul li span:nth-of-type(3) {
   font-size: 14px;
   color: #ff6700;
 }
-.mainContainer .phone-show .phone-main .phone-main-ul li img {
+.mainContainer .product-interface h2.nav div.button-bar div.button .main-ul li img {
   width: 160px;
 }
-.mainContainer .phone-show .phone-main .phone-main-ul li img:first-child {
+.mainContainer .product-interface h2.nav div.button-bar div.button:hover {
+  color: #ff6700;
+  text-decoration: underline;
+}
+.mainContainer .product-interface h2.nav div.button-bar div.button:hover .main-ul {
+  visibility: visible;
+  transition: none;
+}
+.mainContainer .product-interface h2.nav div.button-bar div.button .phone li:first-child,
+.mainContainer .product-interface h2.nav div.button-bar div.button .wearable-devices li:first-child,
+.mainContainer .product-interface h2.nav div.button-bar div.button .laptop li:first-child {
+  height: 100%;
+}
+.mainContainer .product-interface h2.nav div.button-bar div.button .phone li:first-child img,
+.mainContainer .product-interface h2.nav div.button-bar div.button .wearable-devices li:first-child img,
+.mainContainer .product-interface h2.nav div.button-bar div.button .laptop li:first-child img {
   width: 234px;
   height: 614px;
+}
+.mainContainer .product-interface h2.nav div.button-bar div.button .laptop li:nth-last-child(2),
+.mainContainer .product-interface h2.nav div.button-bar div.button .home-appliances li:nth-last-child(2),
+.mainContainer .product-interface h2.nav div.button-bar div.button .domestic-appliance li:nth-last-child(2),
+.mainContainer .product-interface h2.nav div.button-bar div.button .smart-home li:nth-last-child(2) {
+  display: block;
+  width: 234px;
+  height: 143px;
+}
+.mainContainer .product-interface h2.nav div.button-bar div.button .laptop li:nth-last-child(2) img,
+.mainContainer .product-interface h2.nav div.button-bar div.button .home-appliances li:nth-last-child(2) img,
+.mainContainer .product-interface h2.nav div.button-bar div.button .domestic-appliance li:nth-last-child(2) img,
+.mainContainer .product-interface h2.nav div.button-bar div.button .smart-home li:nth-last-child(2) img {
+  width: 80px;
+  float: right;
+}
+.mainContainer .product-interface h2.nav div.button-bar div.button .home-appliances li:nth-child(-n + 2) img,
+.mainContainer .product-interface h2.nav div.button-bar div.button .domestic-appliance li:nth-child(-n + 2) img,
+.mainContainer .product-interface h2.nav div.button-bar div.button .kitchen li:nth-child(-n + 2) img,
+.mainContainer .product-interface h2.nav div.button-bar div.button .smart-home li:nth-child(-n + 2) img {
+  width: 234px;
+  height: 300px;
 }
