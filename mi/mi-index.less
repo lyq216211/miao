@@ -295,6 +295,14 @@ body ul {
       left: 27px;
       opacity: 0;
      }
+     img.qr-code {
+      width: 129px;
+      position: absolute;
+      top: 0;
+      left: -139px;;
+      opacity: 0;
+      transition: .3s;
+     }
      img.img {
       opacity: 1;
      }
@@ -306,11 +314,50 @@ body ul {
       img.img {
         opacity: 0;
       }
-      img.img-hover {
+      img.img-hover,img.qr-code {
         opacity: 1;
       }
       span {
         color: #ff6700;
+      }
+    }
+  }
+}
+@media (max-width:1460px) {
+  .navRight ul {
+    position: fixed;
+    width: 27px;
+    height: 205px;
+    right: 0;
+    bottom: 70px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    li {
+      width: 27px;
+      height: 42px;
+      display: flex;
+      flex-direction: column;
+      span {
+        font-size: 0;;
+      }
+      img {
+        width: 20px;
+        top: 10px;
+        left: 3px;
+        margin: auto;
+      }
+      img.img {
+        opacity: 1;
+      }
+      &:hover {
+        img.img {
+          opacity: 0;
+        }
+        img.img-hover {
+          opacity: 1;
+
+        }
       }
     }
   }
