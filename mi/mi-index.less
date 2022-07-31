@@ -1,7 +1,7 @@
-// * {
-//   background-color: rgba(0,0,0,0.08);
-//   box-shadow: inset 0 0 1px red;
-// }
+* {
+  background-color: rgba(0,0,0,0.08);
+  box-shadow: inset 0 0 1px red;
+}
 html,body,.index {
   margin: 0;
   width: 100%;
@@ -11,7 +11,7 @@ body {
   min-width: 970px;
   font-family: mi;
 }
-.containerLeft,.indexMain,.showRow,.top-img,.product-interface,.video {
+.containerLeft,.indexMain,.showRow,.top-img,.product-interface,.video,.service-nav {
   margin-left: auto;
   margin-right: auto;
   width: 1226px;
@@ -831,6 +831,77 @@ body ul {
               width: 160px;
               height: 160px;
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+.service-nav {
+  div.service-nav-top {
+    padding: 27px 0;
+    border-bottom: 1px solid #e0e0e0;
+    ul {
+      display: flex;
+      li.li1::before {
+        content: '\E634';
+        font-size: 1.5em;
+        vertical-align: top;
+      }
+      li.li2::before {
+        content: '\E635';
+        font-size: 1.5em;
+        vertical-align: top;
+      }
+      li.li3::before {
+        content: '\E636';
+        font-size: 1.5em;
+        vertical-align: top;
+      }
+      li.li4::before {
+        content: '\E638';
+        font-size: 1.5em;
+        vertical-align: top;
+      }
+      li.li5::before {
+        content: '\E637';
+        font-size: 1.5em;
+        vertical-align: top;
+      }
+      li {
+        flex: 1;
+        text-align: center;
+        cursor: pointer;
+        // vertical-align: -10px;
+        &:not(:first-child) {
+          border-left: 1px solid #e0e0e0;
+        }
+        &:hover {
+          color: #ff6700;
+        }
+      }
+    }
+  }
+  div.service-nav-main {
+    width: calc(1226px - 252px);
+    height: 312px;
+    margin: 40px 0;
+    ul.horizontal {
+      display: flex;
+      justify-content: center;
+      > li {
+        width: 170px;
+        text-align: center;
+        position: relative;
+        ul.vertical {
+          padding-top: 20px;
+          padding-left: 52px;
+          padding-right: 52px;
+          li {
+            font-size: 12px;
+            text-align: left;
+            padding: 5px 0;
           }
         }
       }
