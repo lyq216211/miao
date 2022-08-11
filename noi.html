@@ -386,6 +386,14 @@
   }
 </script>
 
+<script type="x" id="ch0104/21">
+  let n = +prompt();
+  let x = +prompt();
+  let y = +prompt();
+  let r = Math.floor(n - y / x);
+  console.log(r);
+</script>
+
 <script type="x" id="ch0105/01">
   let n = +prompt('n');
   let sum = 0;
@@ -395,51 +403,244 @@
   let r = sum / n;
   console.log(r.toFixed(2));
 </script>
-
-<script id="ch0105/02">
-
+<script type="x" id="ch0105/02">
+  let sum = 0;
+  for (let i = 0; i < 12; i++) {
+    let n = +prompt();
+    sum += n;
+  }
+  let r = (sum / 12).toFixed(2);
+  console.log('$' + r);
 </script>
 
-<script id="ch0105/20">
-
+<script type="x" id="ch0105/03">
+  let n = +prompt('n');
+  let sum = 0;
+  for (let i = 0; i < n; i++) {
+    sum += +prompt();
+  }
+  let r = sum / n;
+  console.log(r.toFixed(4));
 </script>
 
-<script id="ch0105/20">
-
+<script type="x" id="ch0105/04">
+  let n = +prompt('n');
+  let sum = 0;
+  for (let i = 0; i < n; i++) {
+    sum += +prompt();
+  }
+  let r = (sum / n).toFixed(5);
+  console.log(sum + ' ' + r);
 </script>
 
-<script id="ch0105/20">
-
+<script type="x" id="ch0105/05">
+  let n = +prompt('n');
+  let max = 0;
+  for (let i = 0; i < n; i++) {
+    grade = +prompt();
+    if (max < grade) max = grade;
+  }
+  console.log(max);
 </script>
 
-<script id="ch0105/20">
-
+<script type="x" id="ch0105/06">
+  let n = +prompt('n');
+  let max = min = +prompt();
+  for (let i = 1; i < n; i++) {
+    m = +prompt();
+    if (max < m) max = m;
+    if (min > m) min = m;
+  }
+  console.log(max - min);
 </script>
 
-<script id="ch0105/20">
-
+<script type="x" id="ch0105/07">
+  let n = +prompt('n');
+  let sum = jin = yin = tong = 0;
+  for (let i = 0; i < n; i++) {
+    x = +prompt('金');
+    y = +prompt('银');
+    z = +prompt('铜');
+    jin += x;
+    yin += y;
+    tong += z;
+  }
+  sum = jin + yin + tong;
+  console.log(jin, yin, tong, sum);
 </script>
 
-<script id="ch0105/20">
-
+<script type="x" id="ch0105/08">
+  let n = +prompt('n');
+  let sum = (n-2)*180;
+  for (let i = 1; i < n; i++) {
+    let angle = +prompt();
+    sum-= angle;
+  }
+  console.log(sum);
 </script>
 
-<script id="ch0105/20">
-
+<script type="x" id="ch0105/09">
+  let m = +prompt();
+  let n = +prompt();
+  let sum = 0;
+  if (m % 2 === 0) m++;
+  for (let i = m; i <= n; i += 2) {
+    sum += i;
+  }
+  console.log(sum);
 </script>
 
-<script id="ch0105/20">
-
+<script type="x" id="ch0105/10">
+  let m = +prompt();
+  let n = +prompt();
+  let sum = 0;
+  for (let i = m; i <= n; i++) {
+    if (i % 17 === 0) {
+      sum += i;
+    }
+  }
+  console.log(sum);
 </script>
 
-<script id="ch0105/20">
-
+<script type="x" id="ch0105/11">
+  const n = +prompt();
+  let count_1 = count_5 = count_10 = 0;
+  for (let i = 0; i < n; i++) {
+    let k = +prompt();
+    if (k === 1) count_1++;
+    if (k === 5) count_5++;
+    if (k === 10) count_10++;
+  }
+  console.log(count_1);
+  console.log(count_5);
+  console.log(count_10);
 </script>
 
-<script id="ch0105/20">
-
+<script type="x" id="ch0105/12">
+  const n = +prompt();
+  const m = +prompt();
+  let count=0;
+  for (let i = 0; i < n; i++) {
+    let k = +prompt();
+    if (k === m) count++;
+  }
+  console.log(count);
 </script>
 
-<script id="ch0105/20">
-
+<script type="x" id="ch0105/13">
+  a = +prompt();
+  const n = +prompt();
+  let r = 1;
+  for(let i = 0;i < n;i++){
+    r *= a;
+  }
+  console.log(r);
 </script>
+
+<script type="x" id="ch0105/14">
+  let x = +prompt();
+  let n = +prompt();
+  for (let i = 0; i < n; i++) {
+    x *= 1.001;
+  }
+  console.log(x.toFixed(4));
+</script>
+
+<script type="x" id="ch0105/15">
+  let r = +prompt();
+  let m = +prompt();
+  let y = +prompt();
+  for (let i = 0; i < y; i++) {
+    m *= (100 + r) / 100;
+  }
+  console.log(Math.trunc(m));
+</script>
+
+<script type="x" id="ch0105/16">
+  const n = +prompt();
+  let k = +prompt();
+  let price = 200;
+  let pro = n;
+  let inc = 1 + k / 100;
+  for (i = 1; pro < price; i++) {
+    price *= inc;
+    pro += n;
+  }
+  console.log(i <= 20 ? i : "Impossible");
+</script>
+
+<script type="x" id="ch0105/17">
+  const k = +prompt();
+  let x = y = 1;
+  let z;
+  for (let i = 3; ; i++) {
+    z = x + y;
+    x = y;
+    y = z;
+    if (i === k) break;
+  }
+  console.log(z);
+</script>
+
+<script type="x" id="ch0105/18">
+  let n = +prompt();
+  let a = +prompt();
+  let b = +prompt();
+  let x = b / a;
+  for (let i = 1; i < n; i++) {
+    let a = +prompt();
+    let b = +prompt();
+    let y = b / a;
+    if (y - x > 0.05) {
+      console.log("better");
+    } else if (x - y > 0.05) {
+      console.log("worse");
+    } else {
+      console.log("same");
+    }
+  }
+</script>
+
+<script type="x" id="ch0105/19">
+  let n = +prompt();
+  let t = 0;
+  for (let i = 0; i < n; i++) {
+    let x = +prompt();
+    let y = +prompt();
+    let m = +prompt();
+    t = t + 1.5 * m + Math.sqrt(x * x + y * y) / 25;
+  }
+  console.log(Math.ceil(t));
+</script>
+
+<script type="x" id="ch0105/20">
+  let h = +prompt();
+  let sum = h;
+  let t = h / 2;
+  for (let i = 1; i < 10; i++) {
+    sum = sum + 2 * t;
+    t /= 2;
+  }
+  console.log(sum.toFixed(4));
+  console.log(t.toFixed(7));
+</script>
+
+<script type="" id="ch0105/21"></script>
+
+<script type="" id="ch0105/22"></script>
+
+<script type="" id="ch0105/23"></script>
+
+<script type="" id="ch0105/24"></script>
+
+<script type="" id="ch0105/25"></script>
+
+<script type="" id="ch0105/26"></script>
+
+<script type="" id="ch0105/27"></script>
+
+<script type="" id="ch0105/28"></script>
+
+<script type="" id="ch0105/29"></script>
+
+<script type="" id="ch0105/30"></script>
