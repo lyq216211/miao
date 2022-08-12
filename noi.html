@@ -791,15 +791,79 @@
   console.log(count === k && m % 19 === 0 ? "YES" : "NO");
 </script>
 
-<script type="" id="ch0105/31"></script>
+<script type="x" id="ch0105/31">
+  const n = +prompt(); //灯
+  const m = +prompt(); //人
+  let on_off = [];
+  let out = [];
+  for (let r = 0; r < n; r++) {
+    on_off.push(true);
+  }
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (j % i === 0) {
+        on_off[j] = !on_off[j];
+      }
+    }
+  }
+  for (let k = 0; k < n; k++) {
+    if (!on_off[k]) {
+      out.push(k);
+    }
+  }
+  let str = out.join(",");
+  console.log(str);
+</script>
 
-<script type="" id="ch0105/32"></script>
+<script type="x" id="ch0105/32">
+  let n = +prompt();
+  let sum = 2;
+  let x = 2;
+  let y = 1;
+  for (let i = 1; i < n; i++) {
+    let q = x + y;
+    let p = x;
+    sum += q / p;
+    x = q;
+    y = p;
+  }
+  console.log(sum.toFixed(4));
+</script>
 
-<script type="" id="ch0105/33"></script>
+<script type="x" id="ch0105/33">
+  let n = +prompt();
+  let sum = 0;
+  for (let i = 1; i <=n; i++) {
+    sum += (-1) ** (i - 1) / i;
+  }
+  console.log(sum.toFixed(4));
+</script>
 
-<script type="" id="ch0105/34"></script>
+<script type="x" id="ch0105/34">
+  let n = +prompt();
+  let sum = 0;
+  for (let i = 1; i <= n; i++) {
+    let r = 1;
+    for (let j = 1; j <= i; j++) {
+      r *= j;
+    }
+    sum += r;
+  }
+  console.log(sum);
+</script>
 
-<script type="" id="ch0105/35"></script>
+<script type="x" id="ch0105/35">
+  let n = +prompt();
+  let sum = 1;
+  for (let i = 1; i <= n; i++) {
+    let r = 1;
+    for (let j = 1; j <= i; j++) {
+      r *= j;
+    }
+    sum += 1 / r;
+  }
+  console.log(sum.toFixed(10));
+</script>
 
 <script type="" id="ch0105/36"></script>
 
