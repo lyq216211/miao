@@ -562,7 +562,7 @@
   let price = 200;
   let pro = n;
   let inc = 1 + k / 100;
-  for (i = 1; pro < price; i++) {
+  for (i = 1; pro < price && i < 99; i++) {
     price *= inc;
     pro += n;
   }
@@ -625,9 +625,49 @@
   console.log(t.toFixed(7));
 </script>
 
-<script type="" id="ch0105/21"></script>
+<script type="x" id="ch0105/21">
+  let n = +prompt();
+  let m = n;
+  while (true) {
+    if (n % 2 === 1) {
+      n = n * 3 + 1;
+      console.log(`${m}*3+1=${n}`);
+      m = n;
+    } else {
+      n /= 2;
+      console.log(`${m}/2=${n}`);
+      m = n;
+    }
+    if (n === 1) {
+      console.log("End");
+      break;
+    }
+  }
+</script>
 
-<script type="" id="ch0105/22"></script>
+<script type="" id="ch0105/22">
+  let sum = 0;
+  let x = (y = z = 0);
+  let isEnough;
+  // debugger;
+  for (var i = 1; i <= 12; i++) {
+    let budget = +prompt();
+    x += 300;
+    y = (x - budget) / 100;
+    x = x - budget;
+    if (y >= 1) {
+      z = Math.trunc(y) * 100;
+      x = x - z;
+      sum += z;
+    }
+
+    if (x < 0) {
+      isEnough = 0;
+      break;
+    }
+  }
+  console.log(isEnough === 0 ? -i : x + sum * 1.2);
+</script>
 
 <script type="" id="ch0105/23"></script>
 
