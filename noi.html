@@ -876,9 +876,22 @@
   console.log(sum.toFixed(2));
 </script>
 
-<script type="" id="ch0105/37"></script>
+<script type="x" id="ch0105/37">
+  let m = +prompt();
+  let n = +prompt();
+  let x = +prompt();
+  let sum = 0;
+  while (true) {
+    n = n + Math.floor(m / n);
+    x = x - Math.ceil(m / n);
+    if (x < 0) break;
+  }
+  console.log(n);
+</script>
 
-<script type="" id="ch0105/38"></script>
+<script type="" id="ch0105/38">
+
+</script>
 
 <script type="x" id="ch0105/39">
   let n = +prompt();
@@ -920,35 +933,39 @@
   console.log(count);
 </script>
 
-<script type="x" id="ch0105/42">
+<script type="" id="ch0105/42">
   let m = +prompt();
   let n = +prompt();
   let a = prompt();
   let b = +prompt();
+  let str = '';
   for (let i = 0; i < m; i++) {
     if (b === 1) {
       for (let j = 0; j < n; j++) {
-        console.log(a);
+        str = str + a;
         if (j === n - 1) {
-          console.log("\n");
+          str = str + '\n';
         }
       }
     }
     if (b === 0) {
       for (let j = 0; j < n; j++) {
         if (i === 0 || i === m - 1) {
-          console.log(a);
+          str = str + a;
         } else {
           if (j === 0 || j === n - 1) {
-            console.log(a);
+            str = str  + a;
+          }else{
+            str = str + ' ';
           }
         }
         if (j === n - 1) {
-          console.log("\n");
+          str = str + '\n';
         }
       }
     }
   }
+  console.log(str);
 </script>
 
 <script type="x" id="ch0105/43">
@@ -1085,5 +1102,4 @@
 
 <script type="" id="narcissistic"></script>
 
-<script type="" id="sqrt">
-</script>
+<script type="" id="sqrt"></script>
