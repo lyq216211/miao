@@ -994,3 +994,96 @@
   }
   console.log(sum);
 </script>
+
+<script type="x" id="narcissistic">
+  let n = +prompt();
+  let m =
+    (n % 10) ** 3 +
+    (((n % 100) - (n % 10)) / 10) ** 3 +
+    (((n % 1000) - (n % 100)) / 100) ** 3;
+  console.log(m === n ? "YES" : "NO");
+</script>
+
+<script type="x" id="narcissistics">
+  for (let i = 2; i <= 10000; i++) {
+    let m =
+      (i % 10) ** 3 +
+      (((i % 100) - (i % 10)) / 10) ** 3 +
+      (((i % 1000) - (i % 100)) / 100) ** 3;
+    if (i === m) console.log(i);
+  }
+</script>
+
+<script type="x" id="palindrom">
+  let n = prompt();
+  let str = n.split("");
+  let arr = str.reverse();
+  console.log(n === arr.join("") ? "YES" : "NO");
+</script>
+
+<script type="x" id="weekday">
+  let year = +prompt();
+  let month = +prompt();
+  let date = new Date(year,month-1,1);
+  console.log(date.getDay());
+</script>
+
+<script type="x" id="complete-number">
+  let n = +prompt();
+  let sum = 0;
+  for (let i = 1; i < n; i++) {
+    if (n % i === 0) {
+      sum += i;
+    }
+  }
+  console.log(sum === n ? "YES" : "NO");
+</script>
+
+<script type="x" id="complete-numbers">
+  for (let i = 1; i < 1000; i++) {
+    let sum = 0;
+    for (let j = 1; j < i; j++) {
+      if (i % j === 0) {
+        sum += j;
+      }
+    }
+    if (sum === i) {
+      console.log(i);
+    }
+  }
+</script>
+
+<script type="x" id="prime">
+  let n = +prompt();
+  let flag = true;
+  if (n === 1) flag = false;
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) {
+      flag = false;
+      break;
+    }
+  }
+  console.log(flag ? "YES" : "NO");
+</script>
+
+<script type="x" id="primes">
+  for (let i = 2; i <= 100; i++) {
+    let flag = true;
+    for (let j = 2; j < i; j++) {
+      if (i % j === 0) {
+        flag = false;
+        break;
+      }
+    }
+    if(flag)console.log(i);
+  }
+</script>
+
+<script type="" id="itoa">
+  // let n = +prompt();
+</script>
+
+<script type="" id="narcissistic"></script>
+
+<script type="" id="sqrt">
+</script>
