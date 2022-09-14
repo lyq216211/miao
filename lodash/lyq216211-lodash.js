@@ -46,6 +46,7 @@ var lyq216211 = {
     for (let i = start; i < end; i++) {
       array[i] = value
     }
+    return array
   },
 
   findIndex: function (array, f, fromIndex = 0) {
@@ -78,27 +79,61 @@ var lyq216211 = {
   flattenDeep: function (array) {
     return array.reduce((result, item) => {
       return Array.isArray(item)
-        ? result.concat(flatten(item))
+        ? result.concat(flattenDeep(item))
         : result.concat(item);
     }, []);
   },
 
   flattenDepth: function (array, depth = 1) {
-    if (depth === 0) {
-      return array
-    }
-    let result = []
-    for (let i = 0; i < array.length; i++) {
-      if (Array.isArray(array[i])) {
-        let flat = flattenDepth(array[i], depth - 1)
-        for (let j = 0; j < flat.length; j++) {
-          result.push(flat[j])
-        }
-      } else {
-        result.push(array[i])
+    function flattenDep(array, depth = 1) {
+      if (depth === 0) {
+        return array
       }
+      let result = []
+      for (let i = 0; i < array.length; i++) {
+        if (Array.isArray(array[i])) {
+          let flat = flattenDep(array[i], depth - 1)
+          for (let j = 0; j < flat.length; j++) {
+            result.push(flat[j])
+          }
+        } else {
+          result.push(array[i])
+        }
+      }
+
+      return result
+    }
+    return flattenDep(array, depth)
+  },
+
+  fromPairs: function (array) {
+    let map = {}
+    for (let i = 0; i < array.length; i++) {
+      let [key, val] = array[i]
+      map[key] = val
     }
 
-    return result
+    return map
   },
+
+  head: function (array) {
+    return array[0]
+  },
+
+  indexOf: function (array, value, fromIndex = 0) {
+    let start
+    if (fromIndex >= 0) {
+      start = fromIndex
+    } else {
+      start = array.length - fromIndex
+    }
+
+    for (let i = start; i < array.length; i++) {
+      if (array[i] === value) {
+        return i
+      }
+    }
+  },
+
+
 }
