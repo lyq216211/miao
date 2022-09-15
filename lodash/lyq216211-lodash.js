@@ -264,6 +264,66 @@ var lyq216211 = {
     }
 
     return map
+  },
+
+  groupBy: function (collection, iteratee) {
+    let map = {}
+
+    if (typeof (iteratee) === 'string') {
+      var f = (item) => item[iteratee]
+    } else if (typeof (iteratee) === 'function') {
+      var f = iteratee
+    }
+
+    for (let i = 0; i < collection.length; i++) {
+      let item = collection[i]
+      let key = f(item)
+      if (key in map) {
+        map[key].push(item)
+      } else {
+        map[key] = [item]
+      }
+    }
+
+    return map
+  },
+
+  keyBy: function (collection, iteratee) {
+    let map = {}
+
+    if (typeof (iteratee) === 'string') {
+      var f = (item) => item[iteratee]
+    } else if (typeof (iteratee) === 'function') {
+      var f = iteratee
+    }
+
+    for (let i = 0; i < collection.length; i++) {
+      let item = collection[i]
+      let key = f(item)
+      map[key] = item
+    }
+
+    return map
+  },
+
+  forEach: function (params) {
+
+  },
+
+  map: function (collection, iteratee) {
+    let result = []
+
+    for (let i = 0; i < collection.length; i++) {
+      let item = collection[i]
+
+      if (typeof (iteratee) === 'string') {
+        result.push(item.iteratee)
+      } else if (typeof (iteratee) === 'function') {
+        result.push(iteratee(item, i, collection))
+      }
+    }
+
+    return result
   }
 
 }
