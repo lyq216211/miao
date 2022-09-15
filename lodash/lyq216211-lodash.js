@@ -52,10 +52,11 @@ var lyq216211 = {
   findIndex: function (array, f, fromIndex = 0) {
     for (let i = fromIndex; i < array.length; i++) {
       let item = array[i]
-      if (f(item)) {
+      if (lyq216211.checkPredicate(f)(item)) {
         return i
       }
     }
+    return -1
   },
 
   findLastIndex: function () {
@@ -135,7 +136,7 @@ var lyq216211 = {
     }
   },
 
-  lastIndexOf: function (array, value, fromIndex = 0) {
+  lastIndexOf: function (array, value, fromIndex = arr.length - 1) {
     let start
     if (fromIndex >= 0) {
       start = fromIndex
@@ -148,6 +149,7 @@ var lyq216211 = {
         return i
       }
     }
+    return -1
   },
 
   initial: function (array) {
@@ -190,6 +192,42 @@ var lyq216211 = {
       j--
     }
     return arr
+  },
+
+  checkPredicate: function (predicate) {
+    if (typeof (predicate) === 'function') {
+      return predicate
+    } else if (typeof (predicate) === 'object') {
+      if (Array.isArray(predicate)) {
+        return function (person) {
+          let [key, val] = predicate
+          return person[key] === val
+        }
+      } else {
+        return function (person) {
+          for (let key in predicate) {
+            if (person[key] !== predicate[key]) {
+              return false
+            }
+          }
+          return true
+        }
+      }
+    } else if (typeof (predicate) === 'string') {
+      return function (person) {
+        let key = predicate
+        return person[key]
+      }
+    }
+  },
+  every: function (users, predicate) {
+    for (let i = 0; i < users.length; i++) {
+      let item = users[i]
+      if (!(lyq216211.checkPredicate(predicate)(item))) {
+        return false
+      }
+    }
+    return true
   }
 
 }
