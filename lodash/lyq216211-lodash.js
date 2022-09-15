@@ -76,7 +76,7 @@ var lyq216211 = {
     return result
   },
 
-  flattenDeep: function f (array) {
+  flattenDeep: function f(array) {
     return array.reduce((result, item) => {
       return Array.isArray(item)
         ? result.concat(f(item))
@@ -135,5 +135,61 @@ var lyq216211 = {
     }
   },
 
+  lastIndexOf: function (array, value, fromIndex = 0) {
+    let start
+    if (fromIndex >= 0) {
+      start = fromIndex
+    } else {
+      start = array.length + fromIndex
+    }
+
+    for (let i = start; i >= 0; i--) {
+      if (array[i] === value) {
+        return i
+      }
+    }
+  },
+
+  initial: function (array) {
+    let n = array.length
+    return array.slice(0, n - 1)
+  },
+
+  join: function (arr, separator) {
+    let str = ''
+    for (let i = 0; i < arr.length; i++) {
+      str += arr[i]
+      if (i < arr.length - 1) {
+        str += separator
+      }
+    }
+    return str
+  },
+
+  last: (arr) => arr[arr.length - 1],
+
+  pull: function (arr, ...value) {
+    let result = []
+    for (let i = 0; i < arr.length; i++) {
+      let item = arr[i]
+      if (!value.includes(item)) {
+        result.push(item)
+      }
+    }
+    return arr = [...result]
+  },
+
+  reverse: function (arr) {
+    let i = 0
+    let j = arr.length - 1
+    while (i < j) {
+      let temp = arr[j]
+      arr[j] = arr[i]
+      arr[i] = temp
+      i++
+      j--
+    }
+    return arr
+  }
 
 }
