@@ -76,10 +76,10 @@ var lyq216211 = {
     return result
   },
 
-  flattenDeep: function (array) {
+  flattenDeep: function f (array) {
     return array.reduce((result, item) => {
       return Array.isArray(item)
-        ? result.concat(flattenDeep(item))
+        ? result.concat(f(item))
         : result.concat(item);
     }, []);
   },
@@ -125,7 +125,7 @@ var lyq216211 = {
     if (fromIndex >= 0) {
       start = fromIndex
     } else {
-      start = array.length - fromIndex
+      start = array.length + fromIndex
     }
 
     for (let i = start; i < array.length; i++) {
