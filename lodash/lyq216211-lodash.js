@@ -49,18 +49,24 @@ var lyq216211 = {
     return array
   },
 
-  findIndex: function (array, f, fromIndex = 0) {
+  findIndex: function (array, predicate, fromIndex = 0) {
     for (let i = fromIndex; i < array.length; i++) {
       let item = array[i]
-      if (lyq216211.checkPredicate(f)(item)) {
+      if (lyq216211.checkPredicate(predicate)(item)) {
         return i
       }
     }
     return -1
   },
 
-  findLastIndex: function () {
-
+  findLastIndex: function (array, predicate, fromIndex = array.length - 1) {
+    for (let i = fromIndex; i >= 0; i--) {
+      let item = array[i]
+      if (lyq216211.checkPredicate(predicate)(item)) {
+        return i
+      }
+    }
+    return -1
   },
   flatten: function (array) {
     let result = []
@@ -136,7 +142,7 @@ var lyq216211 = {
     }
   },
 
-  lastIndexOf: function (array, value, fromIndex = arr.length - 1) {
+  lastIndexOf: function (array, value, fromIndex = array.length - 1) {
     let start
     if (fromIndex >= 0) {
       start = fromIndex
@@ -228,6 +234,16 @@ var lyq216211 = {
       }
     }
     return true
+  },
+
+  some: function (users, predicate) {
+    for (let i = 0; i < users.length; i++) {
+      let item = users[i]
+      if (lyq216211.checkPredicate(predicate)(item)) {
+        return true
+      }
+    }
+    return false
   }
 
 }
