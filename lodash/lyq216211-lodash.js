@@ -244,6 +244,26 @@ var lyq216211 = {
       }
     }
     return false
+  },
+
+  countBy: function (collection, iteratee) {
+    let map = {}
+
+    if (typeof (iteratee) === 'string') {
+      var f = (item) => item[iteratee]
+    } else if (typeof (iteratee) === 'function') {
+      var f = iteratee
+    }
+
+    for (let i = 0; i < collection.length; i++) {
+      let key = f(collection[i])
+      if (!(key in map)) {
+        map[key] = 0
+      }
+      map[key]++
+    }
+
+    return map
   }
 
 }
