@@ -330,8 +330,11 @@ var lyq216211 = {
         let item = collection[i]
 
         if (typeof (iteratee) === 'string') {
-          iteratee = iteratee.slice(1, iteratee.length - 1)
-          result.push(item.iteratee)
+          let arr = iteratee.split('.')
+          for (let i = 0; i < arr.length; i++) {
+            item = item[arr[i]]
+          }
+          result.push(item)
         } else if (typeof (iteratee) === 'function') {
           result.push(iteratee(item, i, collection))
         }
@@ -401,6 +404,29 @@ var lyq216211 = {
       }
     }
   },
+
+  sortBy: function (params) {
+
+  },
+
+  sample: function (collection) {
+    let n = collection.length
+    let index = Math.trunc(Math.random() * n)
+    return collection[index]
+  },
+
+  isUndefined: function (value) {
+    return value === undefined
+  },
+
+  isNull: function (value) {
+    return value === null
+  },
+
+  isNil: function (value) {
+    return value == null
+  },
+
 
 
 }
