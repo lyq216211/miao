@@ -427,6 +427,15 @@ var lyq216211 = {
     return value == null
   },
 
+  max: function (arr) {
+    if (arr.length === 0) return
+    return arr.reduce((maxItem, item) => item > maxItem ? item : maxItem, -Infinity)
+  },
+
+  min: function (arr) {
+    if (arr.length === 0) return
+    return arr.reduce((minItem, item) => item < minItem ? item : minItem, Infinity)
+  },
 
 
 }
