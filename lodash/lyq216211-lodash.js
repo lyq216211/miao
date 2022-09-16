@@ -437,5 +437,54 @@ var lyq216211 = {
     return arr.reduce((minItem, item) => item < minItem ? item : minItem, Infinity)
   },
 
+  maxBy: function (arr, iteratee) {
+    if (typeof (iteratee) === 'string') {
+      var f = (item) => item[iteratee]
+    } else if (typeof (iteratee) === 'function') {
+      var f = iteratee
+    }
+    let maxItem = -Infinity
+    let maxIndex = 0
+    for (let i = 0; i < arr.length; i++) {
+      if (f(arr[i]) > maxItem) {
+        maxItem = f(arr[i])
+        maxIndex = i
+      }
+    }
+
+    return arr[maxIndex]
+  },
+
+  minBy: function (arr, iteratee) {
+    if (typeof (iteratee) === 'string') {
+      var f = (item) => item[iteratee]
+    } else if (typeof (iteratee) === 'function') {
+      var f = iteratee
+    }
+    let minItem = Infinity
+    let minIndex = 0
+    for (let i = 0; i < arr.length; i++) {
+      if (f(arr[i]) < minItem) {
+        minItem = f(arr[i])
+        minIndex = i
+      }
+    }
+
+    return arr[minIndex]
+  },
+
+  round: function (number, precision) {
+
+  },
+
+  sumBy: function (arr, iteratee) {
+    if (typeof (iteratee) === 'string') {
+      var f = (item) => item[iteratee]
+    } else if (typeof (iteratee) === 'function') {
+      var f = iteratee
+    }
+
+    return arr.map(f).reduce((a, b) => a + b, 0)
+  },
 
 }
