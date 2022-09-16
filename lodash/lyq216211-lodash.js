@@ -306,24 +306,80 @@ var lyq216211 = {
     return map
   },
 
-  forEach: function (params) {
+  forEach: function (collection, iteratee) {
+    if (Array.isArray(collection)) {
+      for (let i = 0; i < collection.length; i++) {
+        let item = collection[i]
+        iteratee(item, i, collection)
+      }
+    } else {
+      for (let key in collection) {
+        let value = collection[key]
+        iteratee(value, key)
+      }
+    }
 
+    return collection
   },
 
   map: function (collection, iteratee) {
     let result = []
 
-    for (let i = 0; i < collection.length; i++) {
-      let item = collection[i]
+    if (Array.isArray(collection)) {
+      for (let i = 0; i < collection.length; i++) {
+        let item = collection[i]
 
-      if (typeof (iteratee) === 'string') {
-        result.push(item.iteratee)
-      } else if (typeof (iteratee) === 'function') {
-        result.push(iteratee(item, i, collection))
+        if (typeof (iteratee) === 'string') {
+          result.push(item[iteratee])
+        } else if (typeof (iteratee) === 'function') {
+          result.push(iteratee(item, i, collection))
+        }
+      }
+    } else {
+      for (let key in collection) {
+        let value = collection[key]
+        if (typeof (iteratee) === 'string') {
+          result.push(value[iteratee])
+        } else if (typeof (iteratee) === 'function') {
+          result.push(iteratee(value, key))
+        }
       }
     }
 
     return result
-  }
+  },
+
+  filter: function (arr, iteratee) {
+    let result = []
+    for (let i = 0; i < arr.length; i++) {
+      let item = arr[i]
+      if (lyq216211.checkPredicate(iteratee)(item)) {
+        result.push(item)
+      }
+    }
+
+    return result
+  },
+
+  reduce: function (collection, iteratee, accumulator) {
+    let start = 0
+    if (accumulator == undefined) {
+      accumulator = collection[0]
+      start = 1
+    }
+
+    if (Array.isArray(collection)) {
+      for (let i = start; i < collection.length; i++) {
+        accumulator = iteratee(accumulator, collection[i], i, collection)
+      }
+    } else {
+      for (let key in collection) {
+        accumulator = iteratee(accumulator, collection[key], key)
+      }
+    }
+    return accumulator
+  },
+
+
 
 }
