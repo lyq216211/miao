@@ -405,7 +405,7 @@ var lyq216211 = {
     }
   },
 
-  sortBy: function (params) {
+  sortBy: function (collection, iteratee) {
 
   },
 
@@ -486,5 +486,39 @@ var lyq216211 = {
 
     return arr.map(f).reduce((a, b) => a + b, 0)
   },
+
+  sum: function (arr) {
+    return arr.reduce((a, b) => a + b, 0)
+  },
+
+  flatMap: function (collection, iteratee) {
+    let result = collection.map(iteratee)
+    return lyq216211.flatten(result)
+  },
+
+  flatMapDepth: function (collection, iteratee, depth = 1) {
+    let result = collection.map(iteratee)
+    return lyq216211.flattenDepth(result, depth)
+  },
+
+  get: function (obj, path, defaultValue) {
+    let result = obj
+
+    if (typeof (path) === 'string') {
+      path = path.split('').filter(item => item !== '[' && item !== ']' && item !== '.')
+    }
+
+    for (let item of path) {
+      if (result[item]) {
+        result = result[item]
+      } else {
+        return defaultValue
+      }
+    }
+
+    return result
+  },
+
+
 
 }
