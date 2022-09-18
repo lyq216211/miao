@@ -586,5 +586,41 @@ var lyq216211 = {
     }
 
     return result
-  }
+  },
+
+  concat: function (array, ...values) {
+    let result = array
+    for (let i = 0; i < values.length; i++) {
+      if (Array.isArray(values[i])) {
+        for (let j = 0; j < values[i].length; j++) {
+          result.push(values[i][j])
+        }
+      } else {
+        result.push(values[i])
+      }
+    }
+    return result
+  },
+
+  isEqual: function isEuqal (value, other) {
+    if (typeof (value) === 'object') {
+      if (Object.keys(value).length === Object.keys(other).length) {
+        for (let key in value) {
+          if (typeof (value[key]) === 'object') {
+            if (!(isEqual(value[key], other[key]))) {
+              return false
+            }
+          }
+          if (value[key] !== other[key]) {
+            return false
+          }
+        }
+        return true
+      } else {
+        return false
+      }
+    } else {
+      return JSON.stringify(value) === JSON.stringify(other)
+    }
+  },
 }
