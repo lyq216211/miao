@@ -573,7 +573,7 @@ var lyq216211 = {
       start = 0
     }
     if (end < 0) {
-      step = -step
+      step = -1
     }
     let result = []
     for (let i = start; Math.abs(i) < Math.abs(end); i += step) {
@@ -602,7 +602,7 @@ var lyq216211 = {
     return result
   },
 
-  isEqual: function isEuqal (value, other) {
+  isEqual: function isEqual (value, other) {
     if (typeof (value) === 'object') {
       if (Object.keys(value).length === Object.keys(other).length) {
         for (let key in value) {
