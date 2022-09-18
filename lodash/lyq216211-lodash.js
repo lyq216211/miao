@@ -519,6 +519,47 @@ var lyq216211 = {
     return result
   },
 
+  has: function (obj, path) {
+    let result = obj
 
+    if (typeof (path) === 'string') {
+      path = path.split('').filter(item => item !== '[' && item !== ']' && item !== '.')
+    }
 
+    for (let item of path) {
+      if (result[item]) {
+        result = result[item]
+      } else {
+        return false
+      }
+    }
+
+    return true
+  },
+
+  mapKeys: function (obj, iteratee) {
+    let map = {}
+    for (let key in obj) {
+      let value = obj[key]
+      let resultKey = iteratee(value, key, obj)
+      map[resultKey] = value
+    }
+
+    return map
+  },
+
+  mapValues: function (obj, iteratee) {
+    let map = {}
+    for (let key in obj) {
+      let value = obj[key]
+      if (typeof (iteratee) === 'function') {
+        resultValue = iteratee(value)
+      } else if (typeof (iteratee) === 'string') {
+        resultValue = value[iteratee]
+      }
+      map[key] = resultValue
+    }
+
+    return map
+  },
 }
