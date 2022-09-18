@@ -520,6 +520,7 @@ var lyq216211 = {
   },
 
   has: function (obj, path) {
+    if (Object.keys(obj).length === 0) return false
     let result = obj
 
     if (typeof (path) === 'string') {
@@ -562,4 +563,28 @@ var lyq216211 = {
 
     return map
   },
+
+  range: function (start = 0, end, step = 1) {
+    if (start === end) {
+      return []
+    }
+    if (end == undefined) {
+      end = start
+      start = 0
+    }
+    if (end < 0) {
+      step = -step
+    }
+    let result = []
+    for (let i = start; Math.abs(i) < Math.abs(end); i += step) {
+      result.push(i)
+      if (step === 0) {
+        if (result.length === Math.abs(end - start)) {
+          return result
+        }
+      }
+    }
+
+    return result
+  }
 }
