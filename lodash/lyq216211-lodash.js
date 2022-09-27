@@ -602,8 +602,8 @@ var lyq216211 = {
     return result
   },
 
-  isEqual: function isEqual (value, other) {
-    if (typeof (value) === 'object') {
+  isEqual: function isEqual(value, other) {
+    if (typeof (value) === 'object' && !Array.isArray(value)) {
       if (Object.keys(value).length === Object.keys(other).length) {
         for (let key in value) {
           if (typeof (value[key]) === 'object') {
@@ -623,4 +623,37 @@ var lyq216211 = {
       return JSON.stringify(value) === JSON.stringify(other)
     }
   },
+
+  repeat: function (str, n) {
+    let result = ''
+    for (let i = 0; i < n; i++) {
+      result += str
+    }
+
+    return result
+  },
+
+  dropRight: function (arr, n = 1) {
+    let index = arr.length - n
+    if (index >= 0) {
+      return arr.slice(0, index)
+    }
+    return []
+  },
+
+  dropRightWhile: function (arr, predicate) {
+    // return arr.filter(!lyq216211.checkPredicate(predicate))
+    for (let i = arr.length - 1; i >= 0; i--) {
+      if (lyq216211.checkPredicate(predicate)(arr[i])) {
+        arr.splice(i, 1)
+      }
+    }
+    return arr
+  },
+
+  intersection:function (...arr) {
+    return arr.reduce((accumulator, currItem) => {
+      return accumulator.filter(item => currItem.includes(item))
+    })
+  }
 }
