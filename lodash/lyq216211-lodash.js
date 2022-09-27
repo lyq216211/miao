@@ -1,4 +1,32 @@
 var lyq216211 = {
+  checkPredicate: function (predicate) {
+    if (typeof (predicate) === 'function') {
+      return predicate
+    } else if (typeof (predicate) === 'object') {
+      if (Array.isArray(predicate)) {
+        return function (person) {
+          let [key, val] = predicate
+          return person[key] === val
+        }
+      } else {
+        return function (person) {
+          for (let key in predicate) {
+            if (person[key] !== predicate[key]) {
+              return false
+            }
+          }
+          return true
+        }
+      }
+    } else if (typeof (predicate) === 'string') {
+      return function (person) {
+        let key = predicate
+        return person[key]
+      }
+    }
+  },
+
+
   chunk: function (array, number = 1) {
     let result = []
     let start = 0
@@ -200,32 +228,7 @@ var lyq216211 = {
     return arr
   },
 
-  checkPredicate: function (predicate) {
-    if (typeof (predicate) === 'function') {
-      return predicate
-    } else if (typeof (predicate) === 'object') {
-      if (Array.isArray(predicate)) {
-        return function (person) {
-          let [key, val] = predicate
-          return person[key] === val
-        }
-      } else {
-        return function (person) {
-          for (let key in predicate) {
-            if (person[key] !== predicate[key]) {
-              return false
-            }
-          }
-          return true
-        }
-      }
-    } else if (typeof (predicate) === 'string') {
-      return function (person) {
-        let key = predicate
-        return person[key]
-      }
-    }
-  },
+
   every: function (users, predicate) {
     for (let i = 0; i < users.length; i++) {
       let item = users[i]
@@ -651,9 +654,91 @@ var lyq216211 = {
     return arr
   },
 
-  intersection:function (...arr) {
+  intersection: function (...arr) {
     return arr.reduce((accumulator, currItem) => {
       return accumulator.filter(item => currItem.includes(item))
     })
+  },
+
+  sortedIndex: function (arr, n) {
+    return arr.findIndex((item) => item >= n)
+  },
+
+  union: function (...arr) {
+    let result = []
+    let combined = new Set(lyq216211.flatten(arr))
+    for (let item of combined) {
+      result.push(item)
+    }
+    return result
+  },
+
+  // unionBy: function () {
+
+  // },
+
+  unzip: function (arr) {
+    let result = []
+    let item = []
+    for (let i = 0; i < arr[0].length; i++) {
+      for (let j = 0; j < arr.length; j++) {
+        item.push(arr[j][i])
+      }
+      result.push(item)
+      item = []
+    }
+
+    return result
+  },
+
+  without: function (arr, ...values) {
+    return lyq216211.difference(arr, ...values)
+  },
+
+  xor: function (...arr) {
+    let result = []
+    let map = new Map()
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < arr[i].length; j++) {
+        let item = arr[i][j]
+        if (map.has(item)) {
+          map.set(item, 1)
+        } else {
+          map.set(item, 0)
+        }
+      }
+    }
+
+    for (let key of map.keys()) {
+      if (map.get(key) === 0) {
+        result.push(key)
+      }
+    }
+    return result
+  },
+
+  zip: function (...arr) {
+    let result = []
+    let currArr = []
+
+    for (let i = 0; i < arr[0].length; i++) {
+      for (let j = 0; j < arr.length; j++) {
+        let item = arr[j][i]
+        currArr.push(item)
+      }
+      result.push(currArr)
+      currArr = []
+    }
+
+    return result
+  },
+
+  find: function (collection, precision, fromIndex = 0) {
+    for (let i = fromIndex; i < collection.length; i++) {
+      let item = collection[i]
+      if (lyq216211.checkPredicate(precision)(item)) {
+        return item
+      }
+    }
   }
 }
