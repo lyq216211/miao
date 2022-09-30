@@ -1,5 +1,7 @@
-var lyq216211 = {
-  checkPredicate: function (predicate) {
+var lyq216211 = function () {
+
+
+  function checkPredicate(predicate) {
     if (typeof (predicate) === 'function') {
       return predicate
     } else if (typeof (predicate) === 'object') {
@@ -24,10 +26,10 @@ var lyq216211 = {
         return person[key]
       }
     }
-  },
+  }
 
 
-  chunk: function (array, number = 1) {
+  function chunk(array, number = 1) {
     let result = []
     let start = 0
     let end = start + number
@@ -43,9 +45,9 @@ var lyq216211 = {
     }
 
     return result
-  },
+  }
 
-  compact: function (arr) {
+  function compact(arr) {
     let result = []
     for (let item of arr) {
       if (item) {
@@ -53,9 +55,9 @@ var lyq216211 = {
       }
     }
     return result
-  },
+  }
 
-  difference: function (arr, ...values) {
+  function difference(arr, ...values) {
     let result = []
     values = values.flat()
     for (let i = 0; i < arr.length; i++) {
@@ -64,39 +66,39 @@ var lyq216211 = {
       }
     }
     return result
-  },
+  }
 
-  drop: function (arr, number = 1) {
+  function drop(arr, number = 1) {
     return arr.slice(number)
-  },
+  }
 
-  fill: function (array, value, start = 0, end = array.length) {
+  function fill(array, value, start = 0, end = array.length) {
     for (let i = start; i < end; i++) {
       array[i] = value
     }
     return array
-  },
+  }
 
-  findIndex: function (array, predicate, fromIndex = 0) {
+  function findIndex(array, predicate, fromIndex = 0) {
     for (let i = fromIndex; i < array.length; i++) {
       let item = array[i]
-      if (this.checkPredicate(predicate)(item)) {
+      if (checkPredicate(predicate)(item)) {
         return i
       }
     }
     return -1
-  },
+  }
 
-  findLastIndex: function (array, predicate, fromIndex = array.length - 1) {
+  function findLastIndex(array, predicate, fromIndex = array.length - 1) {
     for (let i = fromIndex; i >= 0; i--) {
       let item = array[i]
-      if (this.checkPredicate(predicate)(item)) {
+      if (checkPredicate(predicate)(item)) {
         return i
       }
     }
     return -1
-  },
-  flatten: function (array) {
+  }
+  function flatten(array) {
     let result = []
     for (let i = 0; i < array.length; i++) {
       if (Array.isArray(array[i])) {
@@ -109,17 +111,17 @@ var lyq216211 = {
     }
 
     return result
-  },
+  }
 
-  flattenDeep: function f(array) {
+  function flattenDeep(array) {
     return array.reduce((result, item) => {
       return Array.isArray(item)
         ? result.concat(f(item))
         : result.concat(item);
     }, []);
-  },
+  }
 
-  flattenDepth: function (array, depth = 1) {
+  function flattenDepth(array, depth = 1) {
     function flattenDep(array, depth = 1) {
       if (depth === 0) {
         return array
@@ -139,9 +141,9 @@ var lyq216211 = {
       return result
     }
     return flattenDep(array, depth)
-  },
+  }
 
-  fromPairs: function (array) {
+  function fromPairs(array) {
     let map = {}
     for (let i = 0; i < array.length; i++) {
       let [key, val] = array[i]
@@ -149,13 +151,13 @@ var lyq216211 = {
     }
 
     return map
-  },
+  }
 
-  head: function (array) {
+  function head(array) {
     return array[0]
-  },
+  }
 
-  indexOf: function (array, value, fromIndex = 0) {
+  function indexOf(array, value, fromIndex = 0) {
     let start
     if (fromIndex >= 0) {
       start = fromIndex
@@ -168,9 +170,9 @@ var lyq216211 = {
         return i
       }
     }
-  },
+  }
 
-  lastIndexOf: function (array, value, fromIndex = array.length - 1) {
+  function lastIndexOf(array, value, fromIndex = array.length - 1) {
     let start
     if (fromIndex >= 0) {
       start = fromIndex
@@ -184,14 +186,14 @@ var lyq216211 = {
       }
     }
     return -1
-  },
+  }
 
-  initial: function (array) {
+  function initial(array) {
     let n = array.length
     return array.slice(0, n - 1)
-  },
+  }
 
-  join: function (arr, separator) {
+  function join(arr, separator) {
     let str = ''
     for (let i = 0; i < arr.length; i++) {
       str += arr[i]
@@ -200,11 +202,13 @@ var lyq216211 = {
       }
     }
     return str
-  },
+  }
 
-  last: (arr) => arr[arr.length - 1],
+  function last(arr) {
+    arr[arr.length - 1]
+  }
 
-  pull: function (arr, ...value) {
+  function pull(arr, ...value) {
     let result = []
     for (let i = 0; i < arr.length; i++) {
       let item = arr[i]
@@ -213,9 +217,9 @@ var lyq216211 = {
       }
     }
     return arr = [...result]
-  },
+  }
 
-  reverse: function (arr) {
+  function reverse(arr) {
     let i = 0
     let j = arr.length - 1
     while (i < j) {
@@ -226,30 +230,30 @@ var lyq216211 = {
       j--
     }
     return arr
-  },
+  }
 
 
-  every: function (users, predicate) {
+  function every(users, predicate) {
     for (let i = 0; i < users.length; i++) {
       let item = users[i]
-      if (!(this.checkPredicate(predicate)(item))) {
+      if (!(checkPredicate(predicate)(item))) {
         return false
       }
     }
     return true
-  },
+  }
 
-  some: function (users, predicate) {
+  function some(users, predicate) {
     for (let i = 0; i < users.length; i++) {
       let item = users[i]
-      if (this.checkPredicate(predicate)(item)) {
+      if (checkPredicate(predicate)(item)) {
         return true
       }
     }
     return false
-  },
+  }
 
-  countBy: function (collection, iteratee) {
+  function countBy(collection, iteratee) {
     let map = {}
 
     if (typeof (iteratee) === 'string') {
@@ -267,9 +271,9 @@ var lyq216211 = {
     }
 
     return map
-  },
+  }
 
-  groupBy: function (collection, iteratee) {
+  function groupBy(collection, iteratee) {
     let map = {}
 
     if (typeof (iteratee) === 'string') {
@@ -289,9 +293,9 @@ var lyq216211 = {
     }
 
     return map
-  },
+  }
 
-  keyBy: function (collection, iteratee) {
+  function keyBy(collection, iteratee) {
     let map = {}
 
     if (typeof (iteratee) === 'string') {
@@ -307,9 +311,9 @@ var lyq216211 = {
     }
 
     return map
-  },
+  }
 
-  forEach: function (collection, iteratee) {
+  function forEach(collection, iteratee) {
     if (Array.isArray(collection)) {
       for (let i = 0; i < collection.length; i++) {
         let item = collection[i]
@@ -323,9 +327,9 @@ var lyq216211 = {
     }
 
     return collection
-  },
+  }
 
-  map: function (collection, iteratee) {
+  function map(collection, iteratee) {
     let result = []
 
     if (Array.isArray(collection)) {
@@ -354,21 +358,21 @@ var lyq216211 = {
     }
 
     return result
-  },
+  }
 
-  filter: function (arr, iteratee) {
+  function filter(arr, iteratee) {
     let result = []
     for (let i = 0; i < arr.length; i++) {
       let item = arr[i]
-      if (this.checkPredicate(iteratee)(item)) {
+      if (checkPredicate(iteratee)(item)) {
         result.push(item)
       }
     }
 
     return result
-  },
+  }
 
-  reduce: function (collection, iteratee, accumulator) {
+  function reduce(collection, iteratee, accumulator) {
     let start = 0
     if (accumulator == undefined) {
       accumulator = collection[0]
@@ -385,18 +389,18 @@ var lyq216211 = {
       }
     }
     return accumulator
-  },
+  }
 
-  reduceRight: function (collection, iteratee, accumulator) {
+  function reduceRight(collection, iteratee, accumulator) {
     let n = collection.length
     for (let i = n - 1; i >= 0; i--) {
       accumulator = iteratee(accumulator, collection[i], i, collection)
     }
 
     return accumulator
-  },
+  }
 
-  size: function (collection) {
+  function size(collection) {
     if (typeof (collection) === 'string') {
       return collection.length
     } else if (typeof (collection) === 'object') {
@@ -406,9 +410,9 @@ var lyq216211 = {
         return Object.getOwnPropertyNames(collection).length
       }
     }
-  },
+  }
 
-  sortBy: function (arr, iteratee) {
+  function sortBy(arr, iteratee) {
     if (typeof (iteratee[0]) === 'function') {
       return arr.sort((a, b) => iteratee[0](a) - iteratee[0](b))
     }
@@ -422,37 +426,37 @@ var lyq216211 = {
         }
       })
     }
-  },
+  }
 
-  sample: function (collection) {
+  function sample(collection) {
     let n = collection.length
     let index = Math.trunc(Math.random() * n)
     return collection[index]
-  },
+  }
 
-  isUndefined: function (value) {
+  function isUndefined(value) {
     return value === undefined
-  },
+  }
 
-  isNull: function (value) {
+  function isNull(value) {
     return value === null
-  },
+  }
 
-  isNil: function (value) {
+  function isNil(value) {
     return value == null
-  },
+  }
 
-  max: function (arr) {
+  function max(arr) {
     if (arr.length === 0) return
     return arr.reduce((maxItem, item) => item > maxItem ? item : maxItem, -Infinity)
-  },
+  }
 
-  min: function (arr) {
+  function min(arr) {
     if (arr.length === 0) return
     return arr.reduce((minItem, item) => item < minItem ? item : minItem, Infinity)
-  },
+  }
 
-  maxBy: function (arr, iteratee) {
+  function maxBy(arr, iteratee) {
     if (typeof (iteratee) === 'string') {
       var f = (item) => item[iteratee]
     } else if (typeof (iteratee) === 'function') {
@@ -468,9 +472,9 @@ var lyq216211 = {
     }
 
     return arr[maxIndex]
-  },
+  }
 
-  minBy: function (arr, iteratee) {
+  function minBy(arr, iteratee) {
     if (typeof (iteratee) === 'string') {
       var f = (item) => item[iteratee]
     } else if (typeof (iteratee) === 'function') {
@@ -486,13 +490,13 @@ var lyq216211 = {
     }
 
     return arr[minIndex]
-  },
+  }
 
-  round: function (number, precision) {
+  function round(number, precision) {
 
-  },
+  }
 
-  sumBy: function (arr, iteratee) {
+  function sumBy(arr, iteratee) {
     if (typeof (iteratee) === 'string') {
       var f = (item) => item[iteratee]
     } else if (typeof (iteratee) === 'function') {
@@ -500,23 +504,23 @@ var lyq216211 = {
     }
 
     return arr.map(f).reduce((a, b) => a + b, 0)
-  },
+  }
 
-  sum: function (arr) {
+  function sum(arr) {
     return arr.reduce((a, b) => a + b, 0)
-  },
+  }
 
-  flatMap: function (collection, iteratee) {
+  function flatMap(collection, iteratee) {
     let result = collection.map(iteratee)
-    return this.flatten(result)
-  },
+    return flatten(result)
+  }
 
-  flatMapDepth: function (collection, iteratee, depth = 1) {
+  function flatMapDepth(collection, iteratee, depth = 1) {
     let result = collection.map(iteratee)
-    return this.flattenDepth(result, depth)
-  },
+    return flattenDepth(result, depth)
+  }
 
-  get: function (obj, path, defaultValue) {
+  function get(obj, path, defaultValue) {
     let result = obj
 
     if (typeof (path) === 'string') {
@@ -532,9 +536,9 @@ var lyq216211 = {
     }
 
     return result
-  },
+  }
 
-  has: function (obj, path) {
+  function has(obj, path) {
     if (Object.keys(obj).length === 0) return false
     let result = obj
 
@@ -551,9 +555,9 @@ var lyq216211 = {
     }
 
     return true
-  },
+  }
 
-  mapKeys: function (obj, iteratee) {
+  function mapKeys(obj, iteratee) {
     let map = {}
     for (let key in obj) {
       let value = obj[key]
@@ -562,9 +566,9 @@ var lyq216211 = {
     }
 
     return map
-  },
+  }
 
-  mapValues: function (obj, iteratee) {
+  function mapValues(obj, iteratee) {
     let map = {}
     for (let key in obj) {
       let value = obj[key]
@@ -577,9 +581,9 @@ var lyq216211 = {
     }
 
     return map
-  },
+  }
 
-  range: function (start = 0, end, step = 1) {
+  function range(start = 0, end, step = 1) {
     if (start === end) {
       return []
     }
@@ -601,9 +605,9 @@ var lyq216211 = {
     }
 
     return result
-  },
+  }
 
-  concat: function (array, ...values) {
+  function concat(array, ...values) {
     let result = array
     for (let i = 0; i < values.length; i++) {
       if (Array.isArray(values[i])) {
@@ -615,9 +619,9 @@ var lyq216211 = {
       }
     }
     return result
-  },
+  }
 
-  isEqual: function isEqual(value, other) {
+  function isEqual(value, other) {
     if (typeof (value) === 'object' && !Array.isArray(value)) {
       if (Object.keys(value).length === Object.keys(other).length) {
         for (let key in value) {
@@ -637,63 +641,63 @@ var lyq216211 = {
     } else {
       return JSON.stringify(value) === JSON.stringify(other)
     }
-  },
+  }
 
-  repeat: function (str, n) {
+  function repeat(str, n) {
     let result = ''
     for (let i = 0; i < n; i++) {
       result += str
     }
 
     return result
-  },
+  }
 
-  dropRight: function (arr, n = 1) {
+  function dropRight(arr, n = 1) {
     let index = arr.length - n
     if (index >= 0) {
       return arr.slice(0, index)
     }
     return []
-  },
+  }
 
-  dropRightWhile: function (arr, predicate) {
-    // return arr.filter(!this.checkPredicate(predicate))
+  function dropRightWhile(arr, predicate) {
+    // return arr.filter(!checkPredicate(predicate))
     for (let i = arr.length - 1; i >= 0; i--) {
-      if (this.checkPredicate(predicate)(arr[i])) {
+      if (checkPredicate(predicate)(arr[i])) {
         arr.splice(i, 1)
       }
     }
     return arr
-  },
+  }
 
-  intersection: function (...arr) {
+  function intersection(...arr) {
     return arr.reduce((accumulator, currItem) => {
       return accumulator.filter(item => currItem.includes(item))
     })
-  },
+  }
 
-  sortedIndex: function (arr, n) {
+  function sortedIndex(arr, n) {
     return arr.findIndex((item) => item >= n)
-  },
+  }
 
-  union: function (...arr) {
+  function union(...arr) {
     let result = []
     let combined = new Set(arr.flat(1))
     for (let item of combined) {
       result.push(item)
     }
     return result
-  },
+  }
 
   // unionBy: function () {
 
   // },
-  uniq: function (...arr) {
+  function uniq(...arr) {
     let result = new Set(arr)
     return [...result]
-  },
+  }
 
-  uniqBy: function (arr, iteratee) {
+  function uniqBy(arr, iteratee) {
     if (typeof (iteratee) === 'function') {
       var func = iteratee
     } else if (typeof (iteratee) === 'string') {
@@ -711,10 +715,10 @@ var lyq216211 = {
     }
 
     return result
-  },
+  }
 
 
-  unzip: function (arr) {
+  function unzip(arr) {
     let result = []
     let item = []
     for (let i = 0; i < arr[0].length; i++) {
@@ -726,13 +730,13 @@ var lyq216211 = {
     }
 
     return result
-  },
+  }
 
-  without: function (arr, ...values) {
-    return this.difference(arr, ...values)
-  },
+  function without(arr, ...values) {
+    return difference(arr, ...values)
+  }
 
-  xor: function (...arr) {
+  function xor(...arr) {
     let result = []
     let map = new Map()
     for (let i = 0; i < arr.length; i++) {
@@ -752,9 +756,9 @@ var lyq216211 = {
       }
     }
     return result
-  },
+  }
 
-  zip: function (...arr) {
+  function zip(...arr) {
     let result = []
     let currArr = []
 
@@ -768,22 +772,22 @@ var lyq216211 = {
     }
 
     return result
-  },
+  }
 
-  find: function (collection, precision, fromIndex = 0) {
+  function find(collection, precision, fromIndex = 0) {
     for (let i = fromIndex; i < collection.length; i++) {
       let item = collection[i]
-      if (this.checkPredicate(precision)(item)) {
+      if (checkPredicate(precision)(item)) {
         return item
       }
     }
-  },
+  }
 
-  partition: function (collection, precision) {
+  function partition(collection, precision) {
     let result = [[], []]
     for (let i = 0; i < collection.length; i++) {
       let item = collection[i]
-      if (this.checkPredicate(precision)(item)) {
+      if (checkPredicate(precision)(item)) {
         result[0].push(item)
       } else {
         result[1].push(item)
@@ -791,46 +795,123 @@ var lyq216211 = {
     }
 
     return result
-  },
+  }
 
-  reject: function (collection, precision) {
+  function reject(collection, precision) {
     let result = []
     for (let i = 0; i < collection; i++) {
       let item = collection[i]
-      if (!this.checkPredicate(precision)(item)) {
+      if (!checkPredicate(precision)(item)) {
         result.push(item)
       }
     }
 
     return result
-  },
+  }
 
 
-  isArray: function (value) {
+  function isArray(value) {
     return Object.getPrototypeOf(value) === Array
-  },
+  }
 
-  isBoolean: function (value) {
+  function isBoolean(value) {
     return Object.getPrototypeOf(value) === Boolean
-  },
+  }
 
-  isDate: function (value) {
+  function isDate(value) {
     return Object.getPrototypeOf(value) === Date
-  },
+  }
 
-  isElement: function (value) {
+  function isElement(value) {
     return value instanceof HTMLElement
-  },
+  }
 
-  isError: function (value) {
+  function isError(value) {
     return Object.getPrototypeOf(value) === Error
-  },
+  }
 
-  isFunction: function (value) {
+  function isFunction(value) {
     return Object.getPrototypeOf(value) === Function
-  },
+  }
 
-  isMatch: function (obj, precision) {
+  function isMatch(obj, precision) {
 
+  }
+
+
+  return {
+    checkPredicate,
+    chunk,
+    compact,
+    drop,
+    fill,
+    findIndex,
+    findLastIndex,
+    flatten,
+    flattenDeep,
+    flattenDepth,
+    fromPairs,
+    head,
+    indexOf,
+    lastIndexOf,
+    initial,
+    join,
+    last,
+    pull,
+    reverse,
+    every,
+    some,
+    countBy,
+    groupBy,
+    keyBy,
+    forEach,
+    map,
+    filter,
+    reduce,
+    reduceRight,
+    size,
+    sortBy,
+    sample,
+    isUndefined,
+    isNull,
+    isNil,
+    max,
+    min,
+    maxBy,
+    minBy,
+    round,
+    sumBy,
+    sum,
+    flatMap,
+    flatMapDepth,
+    get,
+    has,
+    mapKeys,
+    mapValues,
+    range,
+    concat,
+    isEqual,
+    repeat,
+    dropRight,
+    dropRightWhile,
+    intersection,
+    sortedIndex,
+    union,
+    uniq,
+    uniqBy,
+    unzip,
+    without,
+    xor,
+    zip,
+    find,
+    partition,
+    reject,
+    isArray,
+    isBoolean,
+    isDate,
+    isElement,
+    isError,
+    isFunction,
+    isMatch,
   }
 }
