@@ -80,7 +80,7 @@ var lyq216211 = {
   findIndex: function (array, predicate, fromIndex = 0) {
     for (let i = fromIndex; i < array.length; i++) {
       let item = array[i]
-      if (lyq216211.checkPredicate(predicate)(item)) {
+      if (this.checkPredicate(predicate)(item)) {
         return i
       }
     }
@@ -90,7 +90,7 @@ var lyq216211 = {
   findLastIndex: function (array, predicate, fromIndex = array.length - 1) {
     for (let i = fromIndex; i >= 0; i--) {
       let item = array[i]
-      if (lyq216211.checkPredicate(predicate)(item)) {
+      if (this.checkPredicate(predicate)(item)) {
         return i
       }
     }
@@ -232,7 +232,7 @@ var lyq216211 = {
   every: function (users, predicate) {
     for (let i = 0; i < users.length; i++) {
       let item = users[i]
-      if (!(lyq216211.checkPredicate(predicate)(item))) {
+      if (!(this.checkPredicate(predicate)(item))) {
         return false
       }
     }
@@ -242,7 +242,7 @@ var lyq216211 = {
   some: function (users, predicate) {
     for (let i = 0; i < users.length; i++) {
       let item = users[i]
-      if (lyq216211.checkPredicate(predicate)(item)) {
+      if (this.checkPredicate(predicate)(item)) {
         return true
       }
     }
@@ -360,7 +360,7 @@ var lyq216211 = {
     let result = []
     for (let i = 0; i < arr.length; i++) {
       let item = arr[i]
-      if (lyq216211.checkPredicate(iteratee)(item)) {
+      if (this.checkPredicate(iteratee)(item)) {
         result.push(item)
       }
     }
@@ -408,8 +408,20 @@ var lyq216211 = {
     }
   },
 
-  sortBy: function (collection, iteratee) {
-
+  sortBy: function (arr, iteratee) {
+    if (typeof (iteratee[0]) === 'function') {
+      return arr.sort((a, b) => iteratee[0](a) - iteratee[0](b))
+    }
+    if (typeof (iteratee[0] === 'string')) {
+      return arr.sort((a, b) => {
+        for (let i = 0; i < iteratee.length; i++) {
+          let item = iteratee[i]
+          if (a[item] !== b[item]) {
+            return a[item] - b[item]
+          }
+        }
+      })
+    }
   },
 
   sample: function (collection) {
@@ -496,12 +508,12 @@ var lyq216211 = {
 
   flatMap: function (collection, iteratee) {
     let result = collection.map(iteratee)
-    return lyq216211.flatten(result)
+    return this.flatten(result)
   },
 
   flatMapDepth: function (collection, iteratee, depth = 1) {
     let result = collection.map(iteratee)
-    return lyq216211.flattenDepth(result, depth)
+    return this.flattenDepth(result, depth)
   },
 
   get: function (obj, path, defaultValue) {
@@ -645,9 +657,9 @@ var lyq216211 = {
   },
 
   dropRightWhile: function (arr, predicate) {
-    // return arr.filter(!lyq216211.checkPredicate(predicate))
+    // return arr.filter(!this.checkPredicate(predicate))
     for (let i = arr.length - 1; i >= 0; i--) {
-      if (lyq216211.checkPredicate(predicate)(arr[i])) {
+      if (this.checkPredicate(predicate)(arr[i])) {
         arr.splice(i, 1)
       }
     }
@@ -666,7 +678,7 @@ var lyq216211 = {
 
   union: function (...arr) {
     let result = []
-    let combined = new Set(lyq216211.flatten(arr))
+    let combined = new Set(arr.flat(1))
     for (let item of combined) {
       result.push(item)
     }
@@ -676,6 +688,31 @@ var lyq216211 = {
   // unionBy: function () {
 
   // },
+  uniq: function (...arr) {
+    let result = new Set(arr)
+    return [...result]
+  },
+
+  uniqBy: function (arr, iteratee) {
+    if (typeof (iteratee) === 'function') {
+      var func = iteratee
+    } else if (typeof (iteratee) === 'string') {
+      var func = (obj) => obj[iteratee]
+    }
+    let result = []
+    let currArr = []
+
+    for (let i = 0; i < arr.length; i++) {
+      let item = func(arr[i])
+      if (!currArr.includes(item)) {
+        result.push(arr[i])
+      }
+      currArr.push(item)
+    }
+
+    return result
+  },
+
 
   unzip: function (arr) {
     let result = []
@@ -692,7 +729,7 @@ var lyq216211 = {
   },
 
   without: function (arr, ...values) {
-    return lyq216211.difference(arr, ...values)
+    return this.difference(arr, ...values)
   },
 
   xor: function (...arr) {
@@ -736,9 +773,64 @@ var lyq216211 = {
   find: function (collection, precision, fromIndex = 0) {
     for (let i = fromIndex; i < collection.length; i++) {
       let item = collection[i]
-      if (lyq216211.checkPredicate(precision)(item)) {
+      if (this.checkPredicate(precision)(item)) {
         return item
       }
     }
+  },
+
+  partition: function (collection, precision) {
+    let result = [[], []]
+    for (let i = 0; i < collection.length; i++) {
+      let item = collection[i]
+      if (this.checkPredicate(precision)(item)) {
+        result[0].push(item)
+      } else {
+        result[1].push(item)
+      }
+    }
+
+    return result
+  },
+
+  reject: function (collection, precision) {
+    let result = []
+    for (let i = 0; i < collection; i++) {
+      let item = collection[i]
+      if (!this.checkPredicate(precision)(item)) {
+        result.push(item)
+      }
+    }
+
+    return result
+  },
+
+
+  isArray: function (value) {
+    return Object.getPrototypeOf(value) === Array
+  },
+
+  isBoolean: function (value) {
+    return Object.getPrototypeOf(value) === Boolean
+  },
+
+  isDate: function (value) {
+    return Object.getPrototypeOf(value) === Date
+  },
+
+  isElement: function (value) {
+    return value instanceof HTMLElement
+  },
+
+  isError: function (value) {
+    return Object.getPrototypeOf(value) === Error
+  },
+
+  isFunction: function (value) {
+    return Object.getPrototypeOf(value) === Function
+  },
+
+  isMatch: function (obj, precision) {
+
   }
 }
