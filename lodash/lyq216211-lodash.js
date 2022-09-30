@@ -807,15 +807,15 @@ var lyq216211 = {
 
 
   isArray: function (value) {
-    return Object.getPrototypeOf(value) === Array
+    return Object.getPrototypeOf(value) === Array.prototype
   },
 
   isBoolean: function (value) {
-    return Object.getPrototypeOf(value) === Boolean
+    return Object.getPrototypeOf(value) === Boolean.prototype
   },
 
   isDate: function (value) {
-    return Object.getPrototypeOf(value) === Date
+    return Object.getPrototypeOf(value) === Date.prototype
   },
 
   isElement: function (value) {
@@ -823,11 +823,11 @@ var lyq216211 = {
   },
 
   isError: function (value) {
-    return Object.getPrototypeOf(value) === Error
+    return Object.getPrototypeOf(value) === Error.prototype
   },
 
   isFunction: function (value) {
-    return Object.getPrototypeOf(value) === Function
+    return Object.getPrototypeOf(value) === Function.prototype
   },
 
   isMatch: function (obj, precision) {
