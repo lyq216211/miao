@@ -1,4 +1,46 @@
 var lyq216211 = {
+  //返回一个获取某对象propname属性的函数
+  property: function (propName) {
+    return function (obj) {
+      return obj[propName]
+    }
+  },
+  //返回一个判断对象是否匹配pair键值对的函数
+  matchesProperty: function (pair) {
+    let [key, val] = pair
+    return function (obj) {
+      return obj[key] === obj[val]
+    }
+  },
+  //返回一个判断对象是否匹配target对象的函数
+  matches: function (target) {
+    return function (obj) {
+      for (let key in target) {
+        if (key in obj) {
+          if (obj[key] !== target[key]) {
+            return false
+          }
+        } else {
+          return false
+        }
+      }
+      return true
+    }
+  },
+  iterateeFunc: function (predicate) {
+    if (typeof (predicate) === 'function') {
+      return predicate
+    }
+    if (typeof (predicate) === 'string') {
+      return this.property(predicate)
+    }
+    if (Array.isArray(predicate)) {
+      return this.matchesProperty(predicate)
+    }
+    if (typeof (predicate) === 'object') {
+      return this.matches(predicate)
+    }
+  },
   checkPredicate: function (predicate) {
     if (typeof (predicate) === 'function') {
       return predicate
@@ -80,7 +122,7 @@ var lyq216211 = {
   findIndex: function (array, predicate, fromIndex = 0) {
     for (let i = fromIndex; i < array.length; i++) {
       let item = array[i]
-      if (this.checkPredicate(predicate)(item)) {
+      if (this.iterateeFunc(predicate)(item)) {
         return i
       }
     }
@@ -90,7 +132,7 @@ var lyq216211 = {
   findLastIndex: function (array, predicate, fromIndex = array.length - 1) {
     for (let i = fromIndex; i >= 0; i--) {
       let item = array[i]
-      if (this.checkPredicate(predicate)(item)) {
+      if (this.iterateeFunc(predicate)(item)) {
         return i
       }
     }
@@ -232,7 +274,7 @@ var lyq216211 = {
   every: function (users, predicate) {
     for (let i = 0; i < users.length; i++) {
       let item = users[i]
-      if (!(this.checkPredicate(predicate)(item))) {
+      if (!(this.iterateeFunc(predicate)(item))) {
         return false
       }
     }
@@ -242,7 +284,7 @@ var lyq216211 = {
   some: function (users, predicate) {
     for (let i = 0; i < users.length; i++) {
       let item = users[i]
-      if (this.checkPredicate(predicate)(item)) {
+      if (this.iterateeFunc(predicate)(item)) {
         return true
       }
     }
@@ -360,7 +402,7 @@ var lyq216211 = {
     let result = []
     for (let i = 0; i < arr.length; i++) {
       let item = arr[i]
-      if (this.checkPredicate(iteratee)(item)) {
+      if (this.iterateeFunc(iteratee)(item)) {
         result.push(item)
       }
     }
@@ -657,9 +699,9 @@ var lyq216211 = {
   },
 
   dropRightWhile: function (arr, predicate) {
-    // return arr.filter(!this.checkPredicate(predicate))
+    // return arr.filter(!this.iterateeFunc(predicate))
     for (let i = arr.length - 1; i >= 0; i--) {
-      if (this.checkPredicate(predicate)(arr[i])) {
+      if (this.iterateeFunc(predicate)(arr[i])) {
         arr.splice(i, 1)
       }
     }
@@ -773,7 +815,7 @@ var lyq216211 = {
   find: function (collection, precision, fromIndex = 0) {
     for (let i = fromIndex; i < collection.length; i++) {
       let item = collection[i]
-      if (this.checkPredicate(precision)(item)) {
+      if (this.iterateeFunc(precision)(item)) {
         return item
       }
     }
@@ -783,7 +825,7 @@ var lyq216211 = {
     let result = [[], []]
     for (let i = 0; i < collection.length; i++) {
       let item = collection[i]
-      if (this.checkPredicate(precision)(item)) {
+      if (this.iterateeFunc(precision)(item)) {
         result[0].push(item)
       } else {
         result[1].push(item)
@@ -797,7 +839,7 @@ var lyq216211 = {
     let result = []
     for (let i = 0; i < collection; i++) {
       let item = collection[i]
-      if (!this.checkPredicate(precision)(item)) {
+      if (!this.iterateeFunc(precision)(item)) {
         result.push(item)
       }
     }
