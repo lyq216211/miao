@@ -718,6 +718,49 @@ var lyq216211 = {
     return arr.findIndex((item) => item >= n)
   },
 
+  sortIndexBy: function (arr, value, predicate) {
+    predicate = this.iterateeFunc(predicate)
+    let n = predicate(value)
+    return arr.findIndex((item) => predicate(item) >= n)
+  },
+
+
+  sortedLastIndex: function (arr, n) {
+    return arr.findIndex((item) => item > n)
+  },
+
+  sortIndexBy: function (arr, value, predicate) {
+    predicate = this.iterateeFunc(predicate)
+    let n = predicate(value)
+    return arr.findIndex((item) => predicate(item) > n)
+  },
+
+  sortedUniq: function (arr) {
+    let result = []
+
+    for (let item of arr) {
+      let target = result.at(-1)
+      if (item !== target) {
+        result.push(item)
+      }
+    }
+    return result
+  },
+
+
+  sortedUniqBy: function (arr, predicate) {
+    let result = []
+    predicate = this.intersection(predicate)
+
+    for (let item of arr) {
+      let target = result.at(-1)
+      if (predicate(item) !== predicate(target)) {
+        result.push(item)
+      }
+    }
+    return result
+  },
+
   union: function (...arr) {
     let result = []
     let combined = new Set(arr.flat(1))
@@ -727,13 +770,30 @@ var lyq216211 = {
     return result
   },
 
-  // unionBy: function () {
+  unionBy: function (...arrs) {
+    let predicate = arrs.pop()
+    predicate = this.iterateeFunc(predicate)
 
-  // },
-  uniq: function (...arr) {
-    let result = new Set(arr)
-    return [...result]
+    let result = []
+    let set = new Set()
+
+    for (let arr of arrs) {
+      for (let item of arr) {
+        let t = predicate(item)
+        if (!set.has(t)) {
+          result.push(item)
+        }
+        set.add(t)
+      }
+    }
+
+    return result
   },
+  uniq: function (arr) {
+    return [...new Set(arr)]
+  },
+
+
 
   uniqBy: function (arr, iteratee) {
     if (typeof (iteratee) === 'function') {
@@ -752,6 +812,22 @@ var lyq216211 = {
       currArr.push(item)
     }
 
+    return result
+  },
+  uniqWith: function (arr, predicate) {
+    let result = []
+
+    for (let item of arr) {
+      let flag = false
+      for (let p of result) {
+        if (predicate(p, item)) {
+          flag = true
+        }
+      }
+      if (!flag) {
+        result.push(item)
+      }
+    }
     return result
   },
 
