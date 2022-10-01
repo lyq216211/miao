@@ -7,8 +7,8 @@ var lyq216211 = {
   },
   //返回一个判断对象是否匹配pair键值对的函数
   matchesProperty: function (pair) {
-    let [key, val] = pair
     return function (obj) {
+      let [key, val] = pair
       return obj[key] === obj[val]
     }
   },
