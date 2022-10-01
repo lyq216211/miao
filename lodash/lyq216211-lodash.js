@@ -9,7 +9,7 @@ var lyq216211 = {
   matchesProperty: function (pair) {
     return function (obj) {
       let [key, val] = pair
-      return obj[key] === obj[val]
+      return obj[key] === val
     }
   },
   //返回一个判断对象是否匹配target对象的函数
