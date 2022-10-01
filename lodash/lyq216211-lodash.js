@@ -718,18 +718,54 @@ var lyq216211 = {
     return arr.findIndex((item) => item >= n)
   },
 
-  sortIndexBy: function (arr, value, predicate) {
+  sortedIndexBy: function (arr, value, predicate) {
     predicate = this.iterateeFunc(predicate)
     let n = predicate(value)
     return arr.findIndex((item) => predicate(item) >= n)
   },
+
+  sortedIndexOf: function (arr, val) {
+    let low = 0
+    let high = arr.length - 1
+
+    while (low <= high) {
+      let mid = Math.trunc((low + high) / 2)
+      if (arr[mid] === val && arr[mid - 1] < arr[mid] || arr[mid] === val && arr[mid - 1] === undefined) {
+        return mid
+      } else if (arr[mid] < val) {
+        low = mid + 1
+      } else if (arr[mid] >= val) {
+        high = mid - 1
+      }
+    }
+    return -1
+  },
+
+
+  sortedLastIndexOf: function (arr, val) {
+    let low = 0
+    let high = arr.length - 1
+
+    while (low <= high) {
+      let mid = Math.trunc((low + high) / 2)
+      if (arr[mid] === val && arr[mid + 1] > arr[mid] || arr[mid] === val && arr[mid + 1] === undefined) {
+        return mid
+      } else if (arr[mid] <= val) {
+        low = mid + 1
+      } else if (arr[mid] > val) {
+        high = mid - 1
+      }
+    }
+    return -1
+  },
+
 
 
   sortedLastIndex: function (arr, n) {
     return arr.findIndex((item) => item > n)
   },
 
-  sortIndexBy: function (arr, value, predicate) {
+  sortedLastIndexBy: function (arr, value, predicate) {
     predicate = this.iterateeFunc(predicate)
     let n = predicate(value)
     return arr.findIndex((item) => predicate(item) > n)
