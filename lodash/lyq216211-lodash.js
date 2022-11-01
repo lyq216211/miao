@@ -951,7 +951,7 @@ var lyq216211 = {
     let result = []
     for (let i = 0; i < collection; i++) {
       let item = collection[i]
-      if (!this.iterateeFunc(precision)(item)) {
+      if (!(this.iterateeFunc(precision)(item))) {
         result.push(item)
       }
     }
@@ -965,6 +965,7 @@ var lyq216211 = {
   },
 
   isBoolean: function (value) {
+    if (value == null) return false
     return Object.getPrototypeOf(value) === Boolean.prototype
   },
 
@@ -981,10 +982,45 @@ var lyq216211 = {
   },
 
   isFunction: function (value) {
+    if (value == null) return false
     return Object.getPrototypeOf(value) === Function.prototype
   },
 
-  isMatch: function (obj, precision) {
+  isMatch: function (obj, target) {
+    for (let key in target) {
+      if (key in obj) {
+        if (obj[key] !== target[key]) {
+          return false
+        }
+      } else {
+        return false
+      }
+    }
+    return true
+  },
 
+  isArguments: function (params) {
+
+  },
+
+  defaults:function (...objs) {
+    let result = {}
+
+    for (let obj of objs) {
+      let key = Object.keys(obj)[0]
+      if (!(key in result)) {
+        result[key] = obj[key]
+      }
+    }
+
+    return result
+  },
+
+  findKey: function (objs, predicate) {
+    for (let key in objs) {
+      if (this.iterateeFunc(predicate)(objs[key])) {
+        return key
+      }
+    }
   }
 }
